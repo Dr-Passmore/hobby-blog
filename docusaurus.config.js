@@ -41,7 +41,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: "Dr. Passmore's Tech Lab",
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo.svg',
@@ -85,8 +85,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
                 href: 'https://discordapp.com/invite/docusaurus',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'Threads',
+                href: 'https://www.threads.net/@dr_passmore',
               },
             ],
           },
