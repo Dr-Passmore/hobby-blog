@@ -12,7 +12,7 @@ function About() {
       <header className={styles.heroBanner}>
         <div className="container">
           <h1 className="hero__title">About</h1>
-          <p className="hero__subtitle">This is the about page.</p>
+          <p className="hero__subtitle">About me.</p>
         </div>
       </header>
       <main>
