@@ -22,13 +22,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: 'https://github.com/Dr-Passmore/hobby-blog/tree/master/blog',
+          editUrl: 'https://github.com/Dr-Passmore/hobby-blog',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/Dr-Passmore/hobby-blog/blog',
+            'https://github.com/Dr-Passmore/hobby-blog/tree/master/blog',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -111,9 +111,5 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
-      blog: {
-        showReadingTime: true,
-        editUrl: 'https://github.com/Dr-Passmore/hobby-blog/edit/master/blog',
-      }
     }),
 });
