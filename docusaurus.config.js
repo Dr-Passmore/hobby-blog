@@ -111,5 +111,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      blog: {
+        showReadingTime: true,
+        editUrl: 'https://github.com/Dr-Passmore/hobby-blog/edit/master/blog',
+      }
     }),
 });
