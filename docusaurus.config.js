@@ -78,8 +78,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/phillippassmore/',
               },
               {
                 label: 'Discord',
@@ -88,6 +88,10 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'Threads',
                 href: 'https://www.threads.net/@dr_passmore',
+              },
+              {
+                label: 'YouTube',
+                href: 'https://www.youtube.com/channel/UCD--yfP0n1bJ835ZNUNqltQ'
               },
             ],
           },
