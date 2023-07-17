@@ -16,11 +16,12 @@ function About() {
         </div>
       </header>
       <main>
+        <h2>Introduction</h2>
         <p>In this blog, I am aiming to document and share my Raspberry Pi projects, electronics tinkering, coding adventures, and diving into the world of cloud computing. </p>
         <p>As a computer science nerd, I enjoy spending my time working on personal projects to develop my skills</p>
 
         <h2>Professional Experience</h2>
-        <p>Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021">'Consequences of communicating climate science online'</a> and undertook postdoctoral work</p>
+        <p>Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a> and undertook postdoctoral work in Politics.</p>
         {/* Include additional content here */}
       </main>
     </Layout>
