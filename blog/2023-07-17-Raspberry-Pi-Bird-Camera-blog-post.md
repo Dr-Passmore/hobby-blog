@@ -7,10 +7,7 @@ tags: [Raspberry Pi, High Quality Camera Module, bird feeder, DIY Projects, Begi
 
 Ready to turn your bird feeder into a front-row seat to nature's remarkable spectacle? With a high-quality Raspberry Pi camera and a few key components, you can embark on an immersive bird-watching experience like no other. In this detailed build guide, I'll walk you through the essential parts required to create a top-notch Raspberry Pi camera setup for your bird feeder. From the camera module and housing to the necessary cables and accessories, I've got you covered. So, roll up your sleeves and get ready to capture stunning avian moments with this step-by-step guide to building your very own bird feeder surveillance system.
 
-<!-- markdownlint-disable MD033 -->
-:::note custom-class
 ![A blue tit visting the bird feeder](https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg)
-<!-- markdownlint-enable MD033 -->
 
 <!--truncate-->
 
