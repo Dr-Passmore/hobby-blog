@@ -2,7 +2,7 @@
 slug: Witnessing Wings in Detail - Unleashing the Power of a High-Quality Raspberry Pi Camera for Bird Feeder Observation
 title: Feathered Perspectives - Exploring the Beauty of Bird Feeder Watching with a High-Quality Raspberry Pi Camera
 authors: passmore
-tags: [Raspberry Pi, Camera, bird feeder, DIYProjects, Beginner Friendly]
+tags: [Raspberry Pi, High Quality Camera Module, bird feeder, DIY Projects, Beginner Friendly]
 ---
 
 Ready to turn your bird feeder into a front-row seat to nature's remarkable spectacle? With a high-quality Raspberry Pi camera and a few key components, you can embark on an immersive bird-watching experience like no other. In this detailed build guide, I'll walk you through the essential parts required to create a top-notch Raspberry Pi camera setup for your bird feeder. From the camera module and housing to the necessary cables and accessories, I've got you covered. So, roll up your sleeves and get ready to capture stunning avian moments with this step-by-step guide to building your very own bird feeder surveillance system.
@@ -10,6 +10,8 @@ Ready to turn your bird feeder into a front-row seat to nature's remarkable spec
 <!--truncate-->
 
 ## Introduction
+
+![A blue tit visting the bird feeder](https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg)
 
 The build process for this project is straight forward and I would suggest the bird feeder camera as a good beginner project, particularly if you are interested in Raspberry Pi Cameras. The bird feeder used is a simple [Acrylic Hanging Bird Feeder](https://www.amazon.co.uk/Acrylic-Hanging-Suction-Decorate-15x15x7cm/dp/B08XMNMQTY/ref=sr_1_2?crid=27VH3MXIPUFTJ&keywords=Window+Bird+Feeder+Clear+Acrylic+Hanging+Bird+Feeder+with+3+Strong+Extra+Suction+Cups+and+Seed+Tray+for+Small+Birds+Decorate+Your+House+%2815x15x7cm%29&qid=1689535986&s=outdoors&sprefix=window+bird+feeder+clear+acrylic+hanging+bird+feeder+with+3+strong+extra+suction+cups+and+seed+tray+for+small+birds+decorate+your+house+15x15x7cm+%2Coutdoor%2C76&sr=1-2) which attaches to a window using suction cups.
 
@@ -29,6 +31,10 @@ The project requires the following parts:
 - [Heavy-duty Tripod Swivel Ball Adapter](https://thepihut.com/products/heavy-duty-tripod-swivel-ball-adapter)
 
 ## Step-by-Step Build Guide
+
+1. Attach the High Quality Camera Module to the Mounting Plate
+
+2. Attach the Raspberry Pi 4 to the mounting plate
 
 ## Optimizing Performance and Image Quality
 
