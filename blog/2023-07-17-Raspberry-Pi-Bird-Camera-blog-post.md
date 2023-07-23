@@ -13,6 +13,8 @@ Ready to turn your bird feeder into a front-row seat to nature's remarkable spec
 
 The build process for this project is straight forward and I would suggest the bird feeder camera as a good beginner project, particularly if you are interested in Raspberry Pi Cameras. The bird feeder used is a simple [Acrylic Hanging Bird Feeder](https://www.amazon.co.uk/Acrylic-Hanging-Suction-Decorate-15x15x7cm/dp/B08XMNMQTY/ref=sr_1_2?crid=27VH3MXIPUFTJ&keywords=Window+Bird+Feeder+Clear+Acrylic+Hanging+Bird+Feeder+with+3+Strong+Extra+Suction+Cups+and+Seed+Tray+for+Small+Birds+Decorate+Your+House+%2815x15x7cm%29&qid=1689535986&s=outdoors&sprefix=window+bird+feeder+clear+acrylic+hanging+bird+feeder+with+3+strong+extra+suction+cups+and+seed+tray+for+small+birds+decorate+your+house+15x15x7cm+%2Coutdoor%2C76&sr=1-2) which attaches to a window using suction cups.
 
+General advice regarding bird feeders, it can take time for the birds in the area to locate the new feeder and start to regularly visiting. I also recommend experimenting with different bird food mixes. Eventually, you will have regularly visiting birds.
+
 ## Overview of the Raspberry Pi Camera Setup
 
 The project makes use of Raspberry Pi High Quality Camera Module. The camera module uses the 12.3 megapixel Sony IMX477 sensor and has a range of lens supporting M12 mounted lens or C/CS mounted lens. The High Quality Camera Module is avalible with a M12 lens version, but I recommend making use of the standard High Quality Camera Module and purchasing a M12 lens with an adaptor.
@@ -33,6 +35,27 @@ The project requires the following parts:
 1. Attach the High Quality Camera Module to the Mounting Plate
 
 2. Attach the Raspberry Pi 4 to the mounting plate
+
+3. Connect the High Quality Camera Module to the Raspberry Pi 4
+
+4. Create [SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+
+5. Connect power to Raspberry Pi
+
+6. Make sure you enable the camera in the Raspi-config
+
+7. Attach the lens to the High Quality Camera Module
+
+8. Run the following command:
+
+    raspistill -o test.jpg
+
+9. Confirm the picture has successfully been taken if not resolve any error messages
+
+- confirm the camera is enabled.
+- Power down and confirm the camera is correctly connected.
+
+10. 
 
 ## Optimizing Performance and Image Quality
 
