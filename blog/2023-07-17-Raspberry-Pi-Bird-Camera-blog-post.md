@@ -48,7 +48,7 @@ The project requires the following parts:
 
 8. Run the following command:
 
-    raspistill -o test.jpg
+```raspistill -o test.jpg```
 
 9. Confirm the picture has successfully been taken if not resolve any error messages
 
