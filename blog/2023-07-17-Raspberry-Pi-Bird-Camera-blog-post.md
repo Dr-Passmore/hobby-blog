@@ -69,11 +69,19 @@ The project requires the following parts:
 
 ## Monitoring and Recording Bird Feeder Activity
 
-While being able to take images via the terminal is an option, you will want a solution to automatically capture images and videos. There are two approaches I have used with the bird feeder.
+While being able to take images via the terminal is an option, you will want a solution to automatically capture images and videos. There are two approaches I have used with the bird feeder and I continue to use both.
 
 ### RPi Cam Web Interface
 
-[RPi Cam Web Interface](https://elinux.org/RPi-Cam-Web-Interface)
+The [RPi Cam Web Interface](https://elinux.org/RPi-Cam-Web-Interface) is a great web interface for controlling a Raspberry Pi camera. I personally find this fantastic for setting up the Raspberry Pi, as I can use my mobile to check that the camera is lined up.
+
+In addition, you can set up motion detection. Motion detection enables the camera to record videos when the bird feeder is in use.
+
+![Sparrows on bird feeder]('https://youtu.be/wSWLLSZa8bc')
+
+The main challenge with depending on motion detection I struggled with was the moving background. Windy days would cause the motion detection to activate and record the trees in the background. The sensitivity being reduced would result in birds landing but not moving enough to keep the motion detection running. 
+
+However, if you want to grab a picture or video when you happen to be watching, then you can get some great footage. 
 
 ### YouTube Live Streaming
 
