@@ -3,6 +3,8 @@ slug: Witnessing Wings in Detail - Unleashing the Power of a High-Quality Raspbe
 title: Feathered Perspectives - Exploring the Beauty of Bird Feeder Watching with a High-Quality Raspberry Pi Camera
 authors: passmore
 tags: [Raspberry Pi, High Quality Camera Module, bird feeder, DIY Projects, Beginner Friendly]
+image: https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg
+
 ---
 
 Ready to turn your bird feeder into a front-row seat to nature's remarkable spectacle? With a high-quality Raspberry Pi camera and a few key components, you can embark on an immersive bird-watching experience like no other. In this detailed build guide, I'll walk you through the essential parts required to create a top-notch Raspberry Pi camera setup for your bird feeder. From the camera module and housing to the necessary cables and accessories, I've got you covered. So, roll up your sleeves and get ready to capture stunning avian moments with this step-by-step guide to building your very own bird feeder surveillance system.
@@ -48,14 +50,14 @@ The project requires the following parts:
 
 8. Run the following command:
 
-```raspistill -o test.jpg```
+    ```raspistill -o test.jpg```
 
 9. Confirm the picture has successfully been taken if not resolve any error messages
 
-- confirm the camera is enabled.
-- Power down and confirm the camera is correctly connected.
+    - confirm the camera is enabled.
+    - Power down and confirm the camera is correctly connected.
 
-10. 
+10. test
 
 ## Optimizing Performance and Image Quality
 
@@ -64,4 +66,3 @@ The project requires the following parts:
 ## Bird Feeder Moments
 
 ## Conclusion
-
