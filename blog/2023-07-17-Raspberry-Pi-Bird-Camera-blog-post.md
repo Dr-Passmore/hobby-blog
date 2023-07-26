@@ -15,7 +15,7 @@ Ready to turn your bird feeder into a front-row seat to nature's remarkable spec
 
 The build process for this project is straight forward and I would suggest the bird feeder camera as a good beginner project, particularly if you are interested in Raspberry Pi Cameras. The bird feeder used is a simple [Acrylic Hanging Bird Feeder](https://www.amazon.co.uk/Acrylic-Hanging-Suction-Decorate-15x15x7cm/dp/B08XMNMQTY/ref=sr_1_2?crid=27VH3MXIPUFTJ&keywords=Window+Bird+Feeder+Clear+Acrylic+Hanging+Bird+Feeder+with+3+Strong+Extra+Suction+Cups+and+Seed+Tray+for+Small+Birds+Decorate+Your+House+%2815x15x7cm%29&qid=1689535986&s=outdoors&sprefix=window+bird+feeder+clear+acrylic+hanging+bird+feeder+with+3+strong+extra+suction+cups+and+seed+tray+for+small+birds+decorate+your+house+15x15x7cm+%2Coutdoor%2C76&sr=1-2) which attaches to a window using suction cups.
 
-General advice regarding bird feeders, it can take time for the birds in the area to locate the new feeder and start to regularly visiting. I also recommend experimenting with different bird food mixes. Eventually, you will have regularly visiting birds.
+General advice regarding bird feeders, it can take time for the birds in the area to locate the new feeder and start to regularly visiting. I also recommend experimenting with different bird food mixes. Eventually, you will have regularly visiting birds. In my case, it took a few days for regular visits from a Robin, and within a week I had a range of bird species visiting.
 
 ## Overview of the Raspberry Pi Camera Setup
 
@@ -55,13 +55,29 @@ The project requires the following parts:
 9. Confirm the picture has successfully been taken if not resolve any error messages
 
     - confirm the camera is enabled.
-    - Power down and confirm the camera is correctly connected.
+    - Power down and confirm the camera is correctly connected
 
-10. test
+10. Switch off the Raspberry pi and unplug the power cable
 
-## Optimizing Performance and Image Quality
+11. Attach the Raspberry Pi Mounting Plate to the Swivel ball adaptor
+
+12. Attach to the suction cup mount
+
+13. Line up to the ideal location on the window
+
+14. Take test images to check positioning and focus
 
 ## Monitoring and Recording Bird Feeder Activity
+
+While being able to take images via the terminal is an option, you will want a solution to automatically capture images and videos. There are two approaches I have used with the bird feeder.
+
+### RPi Cam Web Interface
+
+[RPi Cam Web Interface](https://elinux.org/RPi-Cam-Web-Interface)
+
+### YouTube Live Streaming
+
+## Optimizing Performance and Image Quality
 
 ## Bird Feeder Moments
 
