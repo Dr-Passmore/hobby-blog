@@ -77,7 +77,7 @@ The [RPi Cam Web Interface](https://elinux.org/RPi-Cam-Web-Interface) is a great
 
 In addition, you can set up motion detection. Motion detection enables the camera to record videos when the bird feeder is in use.
 
-![Sparrows on bird feeder]('https://youtu.be/wSWLLSZa8bc')
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wSWLLSZa8bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 The main challenge with depending on motion detection I struggled with was the moving background. Windy days would cause the motion detection to activate and record the trees in the background. The sensitivity being reduced would result in birds landing but not moving enough to keep the motion detection running. 
 
