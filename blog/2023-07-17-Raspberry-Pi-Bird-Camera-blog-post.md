@@ -32,6 +32,8 @@ The project requires the following parts:
 - [Suction Cup Window Mount for High Quality Camera](https://thepihut.com/products/suction-cup-window-mount-for-high-quality-camera)
 - [Heavy-duty Tripod Swivel Ball Adapter](https://thepihut.com/products/heavy-duty-tripod-swivel-ball-adapter)
 
+![Camera set up with resting sparrow](https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%20camera%20setup%202.jpg)
+
 ## Step-by-Step Build Guide
 
 1. Attach the High Quality Camera Module to the Mounting Plate
@@ -67,6 +69,8 @@ The project requires the following parts:
 
 14. Take test images to check positioning and focus
 
+![Final camera set up](https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%20Camera%20setup.jpg)
+
 ## Monitoring and Recording Bird Feeder Activity
 
 While being able to take images via the terminal is an option, you will want a solution to automatically capture images and videos. There are two approaches I have used with the bird feeder and I continue to use both.
@@ -81,7 +85,7 @@ In addition, you can set up motion detection. Motion detection enables the camer
 
 The main challenge with depending on motion detection I struggled with was the moving background. Windy days would cause the motion detection to activate and record the trees in the background. The sensitivity being reduced would result in birds landing but not moving enough to keep the motion detection running.
 
-However, if you want to grab a picture or video when you happen to be watching, then you can get some great footage.
+However, if you want to grab a picture or video when you happen to be watching, then you can get some great footage. Just make sure you switch off the camera in RPi Cam Web Interface before you try Live Streaming.
 
 ### YouTube Live Streaming
 
@@ -93,11 +97,13 @@ I have had mixed success with YouTube Live Streaming. I may have to follow this 
 
 ## Optimising Performance and Image Quality
 
-Whilst the Raspberry Pi 4 is great, it can struggle with 1080p recording. Often, it may drop frames to optimise footage for recording video. To enhance performance and achieve better image quality, consider adjusting the camera settings to lower resolutions, such as 720p. Lower resolutions generally require less processing power and may lead to smoother recordings. Additionally, ensure that your Raspberry Pi is running on the latest software updates, as these updates may include performance improvements. Experimenting with different camera settings can help strike a balance between performance and image quality, ensuring you capture those precious bird feeder moments with optimal results
+Whilst the Raspberry Pi 4 is great, it can struggle with 1080p recording. Often, it may drop frames to optimise footage for recording video. To enhance performance and achieve better image quality, consider adjusting the camera settings to lower resolutions, such as 720p. Lower resolutions generally require less processing power and may lead to smoother recordings. Additionally, ensure that your Raspberry Pi is running on the latest software updates, as these updates may include performance improvements. Experimenting with different camera settings can help strike a balance between performance and image quality, ensuring you capture those precious bird feeder moments with optimal results.
 
 I have found the following command to be the most reliable for YouTube Live Streaming:
 
-```raspivid -o - -t 0 -vf -hf -w 1280 -h 720 -fps 30 -b 20000000 -a 12 -ae 48,0x0,0x0,0x0 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -analyzeduration 2147483647 -probesize 2147483647 -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 96k -g 60 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE```
+```bash
+raspivid -o - -t 0 -vf -hf -w 1280 -h 720 -fps 30 -b 20000000 -a 12 -ae 48,0x0,0x0,0x0 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -analyzeduration 2147483647 -probesize 2147483647 -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 96k -g 60 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE
+```
 
 ### Raspivid Command Breakdown Explaination for Video Capture
 
@@ -132,4 +138,14 @@ This comprehensive setup optimizes the Raspberry Pi camera settings and audio co
 
 ## Bird Feeder Moments
 
+The sparrows took a few weeks to become brave enough to try out the bird feeder. These days I get a lot of sparrows, and often enjoy watching them fight over the bird feeder. However, I did enjoy watching four sparrows manage to share the feeder.
+
+![4 Sparrows](https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%204%20sparrows.jpg)
+
+![2 Sparrows](https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%202%20Sparrows.jpg)
+
 ## Conclusion
+
+Personally, I got a lot of joy from this project. A very rewarding camera project to build and enjoy. The mount has worked well, so far I have only had one incident where it came away from the window.
+
+I would recommend trying a bird feeder camera out if you want to learn more about using the Raspberry Pi High Quality Camera Module. I have had an interesting experience getting YouTube Live Streaming set up. The main challenge I have found has been more on the YouTube side, with live stream feeds sending data, but having to load into the YouTube Live Stream creator page to get the stream to start or update the settings as the Stream randomly defaults to 'unlisted'.
