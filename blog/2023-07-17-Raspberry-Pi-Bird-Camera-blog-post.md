@@ -9,7 +9,7 @@ image: https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20
 
 Ready to turn your bird feeder into a front-row seat to nature's remarkable spectacle? With a high-quality Raspberry Pi camera and a few key components, you can embark on an immersive bird-watching experience like no other. In this detailed build guide, I'll walk you through the essential parts required to create a top-notch Raspberry Pi camera setup for your bird feeder. From the camera module and housing to the necessary cables and accessories, I've got you covered. So, roll up your sleeves and get ready to capture stunning avian moments with this step-by-step guide to building your very own bird feeder surveillance system.
 
-![A blue tit visting the bird feeder](https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg)
+![A Great Tit visting the bird feeder](https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg)
 
 <!--truncate-->
 
@@ -95,8 +95,9 @@ I have had mixed success with YouTube Live Streaming. I may have to follow this 
 
 Whilst the Raspberry Pi 4 is great, it can struggle with 1080p recording. Often, it may drop frames to optimise footage for recording video. To enhance performance and achieve better image quality, consider adjusting the camera settings to lower resolutions, such as 720p. Lower resolutions generally require less processing power and may lead to smoother recordings. Additionally, ensure that your Raspberry Pi is running on the latest software updates, as these updates may include performance improvements. Experimenting with different camera settings can help strike a balance between performance and image quality, ensuring you capture those precious bird feeder moments with optimal results
 
-I have found the following command to be the most reliable for YouTube Live Streaming
-    raspivid -o - -t 0 -vf -hf -w 1280 -h 720 -fps 30 -b 20000000 -a 12 -ae 48,0x0,0x0,0x0 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -analyzeduration 2147483647 -probesize 2147483647 -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 96k -g 60 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE
+I have found the following command to be the most reliable for YouTube Live Streaming:
+
+```raspivid -o - -t 0 -vf -hf -w 1280 -h 720 -fps 30 -b 20000000 -a 12 -ae 48,0x0,0x0,0x0 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -analyzeduration 2147483647 -probesize 2147483647 -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 96k -g 60 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE```
 
 ### Raspivid Command Breakdown Explaination for Video Capture
 
