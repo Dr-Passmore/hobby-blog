@@ -79,13 +79,55 @@ In addition, you can set up motion detection. Motion detection enables the camer
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wSWLLSZa8bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-The main challenge with depending on motion detection I struggled with was the moving background. Windy days would cause the motion detection to activate and record the trees in the background. The sensitivity being reduced would result in birds landing but not moving enough to keep the motion detection running. 
+The main challenge with depending on motion detection I struggled with was the moving background. Windy days would cause the motion detection to activate and record the trees in the background. The sensitivity being reduced would result in birds landing but not moving enough to keep the motion detection running.
 
-However, if you want to grab a picture or video when you happen to be watching, then you can get some great footage. 
+However, if you want to grab a picture or video when you happen to be watching, then you can get some great footage.
 
 ### YouTube Live Streaming
 
-## Optimizing Performance and Image Quality
+I have tried out YouTube Live Streaming. This is great for being able to directly share the bird feeder with Family and Friends. The first time you set up a YouTube Live Stream there is a 24 hour wait period for YouTube to approve. Once YouTube has approved, you will be provided with a Stream key to send the video stream to.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EWa1yGqdUSY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+I have had mixed success with YouTube Live Streaming. I may have to follow this blog post with a Part 2 for YouTube Live Streaming guide, once I finally have a solution in place that reliably works.
+
+## Optimising Performance and Image Quality
+
+Whilst the Raspberry Pi 4 is great, it can struggle with 1080p recording. Often, it may drop frames to optimise footage for recording video. To enhance performance and achieve better image quality, consider adjusting the camera settings to lower resolutions, such as 720p. Lower resolutions generally require less processing power and may lead to smoother recordings. Additionally, ensure that your Raspberry Pi is running on the latest software updates, as these updates may include performance improvements. Experimenting with different camera settings can help strike a balance between performance and image quality, ensuring you capture those precious bird feeder moments with optimal results
+
+I have found the following command to be the most reliable for YouTube Live Streaming
+    raspivid -o - -t 0 -vf -hf -w 1280 -h 720 -fps 30 -b 20000000 -a 12 -ae 48,0x0,0x0,0x0 | ffmpeg -re -ar 44100 -ac 2 -acodec pcm_s16le -f s16le -analyzeduration 2147483647 -probesize 2147483647 -ac 2 -i /dev/zero -f h264 -i - -vcodec copy -acodec aac -ab 96k -g 60 -strict experimental -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE
+
+### Raspivid Command Breakdown Explaination for Video Capture
+
+- raspivid: This is the command to capture video with the Raspberry Pi camera.
+- -o -: Specifies that the output should be sent to stdout.
+- -t 0: Sets the recording time to 0, indicating continuous recording until stopped.
+- -vf -hf: Flips the video vertically and horizontally to correct the camera orientation.
+- -w 1280 -h 720: Sets the resolution to 1280x720 (720p).
+- -fps 30: Sets the frame rate to 30 frames per second.
+- -b 20000000: Sets the bitrate to 20,000,000 bits per second for high-quality streaming.
+- -a 12 -ae 48,0x0,0x0,0x0: Adds an annotation overlay with the current date and time.
+
+### FFMPEG Command Breakdown Explaination for Video Stream
+
+- ffmpeg: A multimedia framework used to handle the video stream.
+- -re: Tells ffmpeg to read input at the native frame rate.
+- -ar 44100: Sets the audio sampling rate to 44100 Hz.
+- -ac 2: Sets the number of audio channels to 2 (stereo).
+- -acodec pcm_s16le: Specifies the audio codec as PCM 16-bit little-endian, which provides uncompressed audio.
+- -f s16le: Sets the output audio format to s16le (16-bit little-endian).
+- -analyzeduration 2147483647 -probesize 2147483647: Sets the maximum analysis duration and probe size to very large values, allowing better handling of audio streams with variable durations.
+- -i /dev/zero: Specifies the input source as /dev/zero, which is a special device that provides an endless stream of null data (silent audio) in this context. This is used to ensure that the audio input is generated even if no audio source is connected.
+- -f h264: Sets the input format to H.264 video codec.
+- -i -: Specifies the input source as standard input, which allows the video to be piped from another command (in this case, the raspivid command output).
+- -vcodec copy: Copies the video codec from the input source without re-encoding, preserving the original video quality and reducing CPU usage.
+- -acodec aac -ab 96k: Sets the audio codec to AAC and the audio bitrate to 96k for compressed audio output.
+- -g 60: Sets the group of picture (GOP) size to 60 frames, which is important for live streaming to achieve optimal compression and network transmission efficiency.
+- -strict experimental: Enables experimental features of the AAC codec.
+- -f flv rtmp://a.rtmp.youtube.com/live2/ADD-STREAM-KEY-HERE: Specifies the output format as FLV and the destination as the YouTube Live stream URL. Replace ADD-STREAM-KEY-HERE with your actual YouTube Live stream key.
+
+This comprehensive setup optimizes the Raspberry Pi camera settings and audio configuration, ensuring reliable YouTube Live Streaming and smooth transmission of your bird feeder footage to your online audience.
 
 ## Bird Feeder Moments
 
