@@ -56,7 +56,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
           {to: '/blog', label: 'Blog', position: 'left'},
           { to: '/about', label: 'About', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/Dr-Passmore',
             label: 'GitHub',
             position: 'right',
           },
@@ -80,10 +80,6 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
               {
                 label: 'LinkedIn',
                 href: 'https://www.linkedin.com/in/phillippassmore/',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
               },
               {
                 label: 'Threads',
