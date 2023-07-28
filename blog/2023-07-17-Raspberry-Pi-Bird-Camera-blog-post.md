@@ -138,7 +138,7 @@ This comprehensive setup optimizes the Raspberry Pi camera settings and audio co
 
 ## Bird Feeder Moments
 
-The sparrows took a few weeks to become brave enough to try out the bird feeder. These days I get a lot of sparrows, and often enjoy watching them fight over the bird feeder. However, I did enjoy watching four sparrows manage to share the feeder.
+The sparrows took a few weeks to become brave enough to try out the bird feeder. These days I get a lot of sparrows, and often enjoy watching them fight over the bird feeder. I did manage to get to watch four sparrows sharing the feeder.
 
 ![4 Sparrows](https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%204%20sparrows.jpg)
 
