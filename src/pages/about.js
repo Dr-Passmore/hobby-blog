@@ -9,7 +9,7 @@ function About() {
     <Layout
       title={`About ${siteConfig.title}`}
       description="Description of the About page">
-      <header className={styles.heroBanner}>
+      <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">Dr Phillip Passmore</h1>
           <p className="hero__subtitle">Hello and welcome to my website!</p>
