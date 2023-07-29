@@ -61,12 +61,24 @@ function About() {
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Administrator Associate</p>
               </a>
             </div>
-            {/* Certification 4 */}
-            {/* Certification 5 */}
-            {/* Certification 6 */}
-            {/* Certification 7 */}
-            {/* Certification 8 */}
-            {/* Certification 9 */}
+            <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/fcce36b4-0406-4162-a3ee-084373d07ffc/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Azure%20Security%20Engineer.png" alt="Microsoft Certified: Azure Security Engineer Associate Badge" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Azure Security Engineer Associate</p>
+              </a>
+            </div>
+            <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/9a8c2170-7d0a-474e-8dc1-aa3f516325ba/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Identity%20and%20Access.png" alt="Microsoft Certified: Identity and Access Administrator Associate Badge" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Identity and Access Administrator Associate</p>
+              </a>
+            </div>
+            <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/4b6d71c7-3ede-4388-bcb8-64b75d11aa3b/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20IOT%20Dev.png" alt="Microsoft Certified: Azure IoT Developer Specialty Badge" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Azure IoT Developer Specialty</p>
+              </a>
+            </div>
           </div>
         </div>
         
