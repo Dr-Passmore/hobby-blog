@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './about.module.css';
@@ -24,6 +25,7 @@ function About() {
           <h2>Professional Experience</h2>
           <p>Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a> and undertook postdoctoral work in Politics.</p>
           <h2>Certifications</h2>
+          <p>I have undertaken a wide range of Azure training and continue to develop my Azure knowledge. I have been fortunate to able to complete a range of Microsoft certs</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
               <a href="https://www.credly.com/badges/b2a71c42-6396-4dd0-8f5d-261a46be4879/public_url" target="_blank">
