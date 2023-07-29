@@ -23,7 +23,34 @@ function About() {
 
           <h2>Professional Experience</h2>
           <p>Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a> and undertook postdoctoral work in Politics.</p>
-          
+          <h2>Certifications</h2>
+          <div className={styles.certsContainer}>
+          <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/b2a71c42-6396-4dd0-8f5d-261a46be4879/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20AI%20Engineer.png" alt="Microsoft Certified: Azure AI Engineer" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Azure AI Engineer</p>
+              </a>
+            </div>
+            <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/11a8ef41-13a7-4155-9716-14f9eebbc185/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Data%20Engineer.png" alt="Microsoft Certified: Azure Data Engineer Associate" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Azure Data Engineer Associate</p>
+              </a>
+            </div>
+            <div className={styles.certificate}>
+              <a href="https://www.credly.com/badges/11a8ef41-13a7-4155-9716-14f9eebbc185/public_url" target="_blank">
+                <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Data%20Engineer.png" alt="Microsoft Certified: Azure Data Engineer Associate" />
+                <p className={styles.certificateTitle}>Microsoft Certified: Azure Data Engineer Associate</p>
+              </a>
+            </div>
+            {/* Certification 3 */}
+            {/* Certification 4 */}
+            {/* Certification 5 */}
+            {/* Certification 6 */}
+            {/* Certification 7 */}
+            {/* Certification 8 */}
+            {/* Certification 9 */}
+          </div>
         </div>
         
       </main>

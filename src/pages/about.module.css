@@ -33,3 +33,22 @@
   flex: 2;
   padding: 20px;
 }
+
+.certsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.certificate {
+  width: calc(33.33% - 20px);
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+.certificate img {
+  max-width: 100%;
+  height: auto;
+}
