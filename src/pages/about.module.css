@@ -17,6 +17,10 @@
   .certificate {
     width: 100%;
   }
+  .certificate img {
+    max-width: 50%;
+    height: auto;
+  }
 }
 
 .buttons {
@@ -52,6 +56,6 @@
 }
 
 .certificate img {
-  max-width: 50%;
+  max-width: 33%;
   height: auto;
 }
