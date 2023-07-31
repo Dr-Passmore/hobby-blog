@@ -59,3 +59,7 @@
   max-width: 33%;
   height: auto;
 }
+.certificate:hover {
+  box-shadow: 0 0 5px rgba(0, 0, 255, 0.7); 
+  transform: translateY(-2px); 
+}
