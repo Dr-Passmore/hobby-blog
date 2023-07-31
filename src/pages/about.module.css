@@ -21,6 +21,17 @@
     max-width: 50%;
     height: auto;
   }
+  .academiaContainer {
+    flex-direction: column;
+  }
+  .academiaText,
+  .academiaImage {
+    padding-right: 0; 
+  }
+  .academiaImage img {
+    max-width: 100%; 
+    margin: 20px auto; 
+  }
 }
 
 .buttons {
@@ -62,4 +73,29 @@
 .certificate:hover {
   box-shadow: 0 0 5px rgba(0, 0, 255, 0.7); 
   transform: translateY(-2px); 
+}
+
+.academiaContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.academiaText {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.academiaImage {
+  flex: 1;
+}
+
+.academiaImage img {
+  width: 100%;
+  height: auto;
+  max-width: 400px; 
+  display: block;
+  margin: 0 auto;
 }

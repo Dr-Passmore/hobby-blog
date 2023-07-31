@@ -18,13 +18,28 @@ function About() {
       </header>
       <main className={styles.containerWithSidebar}>
         <div className={styles.mainContent}>
-          <h2>Introduction</h2>
-          <p>In this blog, I am aiming to document and share my Raspberry Pi projects, electronics tinkering, coding adventures, and diving into the world of cloud computing. </p>
-          <p>As a computer science nerd, I enjoy spending my time working on personal projects to develop my skills</p>
+          <h2>About me</h2>
+          <p>I have stated with website to document and share my Raspberry Pi projects, electronics tinkering, coding adventures, and share my cloud computing projects. </p>
+          <p>I enjoy spending my time working on personal projects to develop my skills. I have been fortunate to have been able to undertake a range of IT roles which has given me broad IT experience</p>
 
           <h2>Professional Experience</h2>
-          <p>Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a> and undertook postdoctoral work in Politics.</p>
+          
+          <div className={styles.academiaContainer}>
+            <div className={styles.academiaText}>
+              <p>
+                Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD which explored <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a>. My PhD took an interdisciplinary approach, examining public understanding of science through the lens of computer-mediated communication.
+              </p>
+              <p>
+                I followed my work and undertook postdoctoral work in the Politics department. This gave me the opportunity to contribute to research projects looking into environmental activism, the rise of Corbyn, and <a href="https://journals.sagepub.com/doi/abs/10.1177/2399654419825654" target="_blank">'Why did Cornwall vote for Brexit?'</a>.
+              </p>
+            </div>
+            <div className={styles.academiaImage}>
+              <img src="https://personalblogimages.blob.core.windows.net/websiteimages/PhD%20Research%20poster-1.png" alt="PhD Research Poster" />
+            </div>
+          </div>
+
           <h2>Certifications</h2>
+
           <p>I have undertaken a wide range of Azure training and continue to develop my Azure knowledge. I have been fortunate to able to complete a range of Microsoft certs</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
