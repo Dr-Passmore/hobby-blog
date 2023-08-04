@@ -24,23 +24,28 @@ function About() {
 
           <h2>Professional Experience</h2>
           
+          <h3>Climate Change Research</h3>
           <div className={styles.academiaContainer}>
             <div className={styles.academiaText}>
-              <p>
-                Initially, I specialised in academic research, with a primary focus on climate change. I completed a PhD which explored <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a>. My PhD took an interdisciplinary approach, examining public understanding of science through the lens of computer-mediated communication.
-              </p>
-              <p>
-                I followed my work and undertook postdoctoral work in the Politics department. This gave me the opportunity to contribute to research projects looking into environmental activism, the rise of Corbyn, and <a href="https://journals.sagepub.com/doi/abs/10.1177/2399654419825654" target="_blank">'Why did Cornwall vote for Brexit?'</a>.
-              </p>
+            <p>
+                I specialised in Climate Change communication with a PhD which explored <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a>. My PhD took an interdisciplinary approach, examining public understanding of science through the lens of computer-mediated communication. 
+            </p>
+            <p>
+                I followed my PhD with postdoctoral research for the Politics department. This gave me the opportunity to contribute to research projects looking into environmental activism, the rise of Corbyn, and <a href="https://journals.sagepub.com/doi/abs/10.1177/2399654419825654" target="_blank">'Why did Cornwall vote for Brexit?'</a>.
+            </p>
             </div>
             <div className={styles.academiaImage}>
               <img src="https://personalblogimages.blob.core.windows.net/websiteimages/PhD%20Research%20poster-1.png" alt="PhD Research Poster" />
             </div>
           </div>
 
-          <h2>Certifications</h2>
+          <h3>IT Experience</h3>
 
-          <p>I have undertaken a wide range of Azure training and continue to develop my Azure knowledge. I have been fortunate to able to complete a range of Microsoft certs</p>
+          <p><a href="https://www.linkedin.com/in/phillippassmore/" target="_blank">I have undertaken a range of IT experience</a></p>
+
+          <h3>Azure Certifications</h3>
+
+          <p>I have undertaken a wide range of Azure training and continue to develop my Azure knowledge. I have been fortunate to able to complete a range of Microsoft certs including all 8 of the fundamental certs and the following certs:</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
               <a href="https://www.credly.com/badges/b2a71c42-6396-4dd0-8f5d-261a46be4879/public_url" target="_blank">
