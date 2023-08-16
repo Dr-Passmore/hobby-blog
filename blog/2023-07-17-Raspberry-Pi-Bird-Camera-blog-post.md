@@ -1,5 +1,5 @@
 ---
-slug: Witnessing Wings in Detail - Unleashing the Power of a High-Quality Raspberry Pi Camera for Bird Feeder Observation
+slug: witnessing-wings-detail-power-high-quality-raspberry-pi-camera-bird-feeder-observation
 title: Feathered Perspectives - Exploring the Beauty of Bird Feeder Watching with a High-Quality Raspberry Pi Camera
 authors: passmore
 tags: [Raspberry Pi, High Quality Camera Module, bird feeder, DIY Projects, Beginner Friendly]
