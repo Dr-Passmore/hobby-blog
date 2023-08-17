@@ -66,7 +66,7 @@ def get_data():
 
 ```
 
-To get the location you are interested in you will need to update the Stations number: ```https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0005/TidalEvents?duration=2&key={apiKey}``` For example, Falmouth is **0005**
+To get the location you are interested in you will need to update the Stations code: ```https://admiraltyapi.azure-api.net/uktidalapi/api/V1/Stations/0005/TidalEvents?duration=2&key={apiKey}``` For example, Falmouth is **0005**
 
 ### Tide Station Examples
 
