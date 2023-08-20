@@ -1,6 +1,7 @@
 ---
 slug: raspberry-pi-tide-information-display-epaper
 title: Building a Tide Information Display with Raspberry Pi and E-Paper - High Tide, Low Tide, and More!
+description: Creating a Tide Information Display with an e-paper screen and a Raspberry Pi Zero. 
 authors: passmore
 tags: [Raspberry Pi, E-Paper Display, DIY Projects, Beginner Friendly, Python]
 image: https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg
@@ -17,7 +18,7 @@ Are you fascinated by the ebb and flow of the tides? With the power of a Raspber
 
 ## Overview of the Raspberry Pi E-Paper Display
 
-The project requires the following parts:
+The project requires only the following parts:
 
 ### Required Parts and Equipment
 
@@ -25,11 +26,42 @@ The project requires the following parts:
 - [E-Paper Display](https://thepihut.com/products/three-colour-2-13-eink-display-phat-red-black-white)
 - [Raspberry Pi 0 E-Paper Case](https://thepihut.com/products/pi-zero-case-for-waveshare-2-13-eink-display)
 - Micro SD Card
+- Micro USB wire for power
 
 ## Setting Up the Hardware
 
-1. Connect the E-Paper Display to your Raspberry Pi.
-2. Ensure the necessary libraries and drivers are installed.
+1. Solder the header pins to the Raspberry Pi Zero (Skip if you purchased a board with pre soldered header pins)
+2. Create [SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+3. Insert micro SD card
+4. Construct the case
+5. Connect the E-Paper Display to your Raspberry Pi pins.
+6. Finish case construction
+7. Connect power to Raspberry Pi
+8. Test that you can connect via terminal that the Raspberry Pi is Running.
+9. Check for updates and install
+10. Install the required libraries
+11. Run test code to confirm screen is updated
+
+### Library Installs
+
+```bash
+    sudo apt-get update
+    sudo apt-get install python3-pip
+    sudo apt-get install python3-pil
+    sudo apt-get install python3-numpy
+    sudo pip3 install RPi.GPIO
+    sudo pip3 install spidev
+```
+
+### Test code
+
+Depending on the Screen you have purchased select the relevant test code file. I have a 2.13 inch Red, Black, and White screen so have used epd_2in13bc_test.py to confirm that the e-paper screen is working as expected.
+
+```bash
+git clone https://github.com/waveshare/e-Paper.git
+cd e-Paper/RaspberryPi_JetsonNano/python/examples
+python3 epd_2in13bc_test.py
+```
 
 ## Collecting Tide Data
 
@@ -84,6 +116,8 @@ ID    | Name                     | Country | Continuous Heights | Footnote
 0008A | Lostwithiel              | England | False               | Dries out except for river water
 
 Full station information has been pulled from API and converted into a [csv for easy browsing](https://github.com/Dr-Passmore/e-paper-tidal-info-project/blob/master/station.csv)
+
+### Get API Key
 
 ## Displaying Tide Information
 
