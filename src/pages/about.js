@@ -19,8 +19,9 @@ function About() {
       <main className={styles.containerWithSidebar}>
         <div className={styles.mainContent}>
           <h2>About me</h2>
-          <p>I have stated with website to document and share my Raspberry Pi projects, electronics tinkering, coding adventures, and share my cloud computing projects. </p>
-          <p>I enjoy spending my time working on personal projects to develop my skills. I have been fortunate to have been able to undertake a range of IT roles which has given me broad IT experience</p>
+          <p>Welcome to my website, where I document and share my journey through Raspberry Pi projects, electronics tinkering, coding adventures, and cloud computing projects. I'm passionate about honing my skills through personal projects and drawing from a diverse range of IT roles that have shaped my broad experience. As my journey evolved, I delved into diverse professional experiences that enriched my skills and knowledge.</p>
+
+          <p>I enjoy spending my time working on personal projects that not only fuel my curiosity but also hone my skills. I have been fortunate to have been able to undertake a range of IT roles which has given me broad IT experience. However, I initially started down a different path</p>
 
           <h2>Professional Experience</h2>
           
@@ -28,10 +29,16 @@ function About() {
           <div className={styles.academiaContainer}>
             <div className={styles.academiaText}>
             <p>
-                I specialised in Climate Change communication with a PhD which explored <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a>. My PhD took an interdisciplinary approach, examining public understanding of science through the lens of computer-mediated communication. 
+                My academic journey led me to specialise in Environmental Politics, eventually focusing on Climate Change communication with my PhD exploring the impact of the Internet. My research focused on <a href="https://ore.exeter.ac.uk/repository/handle/10871/30021" target="_blank">'Consequences of communicating climate science online'</a>. Taking an interdisciplinary approach, I explored public understanding of science through the lens of computer-mediated communication.
             </p>
             <p>
-                I followed my PhD with postdoctoral research for the Politics department. This gave me the opportunity to contribute to research projects looking into environmental activism, the rise of Corbyn, and <a href="https://journals.sagepub.com/doi/abs/10.1177/2399654419825654" target="_blank">'Why did Cornwall vote for Brexit?'</a>.
+                Employing a mixed methods approach, I used experimental methodology to analyse the impact of different media content on participants' comprehension of Climate Change. Additionally, I engaged participants in focus groups to gather in-depth insights into their perspectives on using the internet to engage with information about climate science. The journey of pursuing my doctoral degree was immensely fulfilling and enriching.
+            </p>
+            <p>
+                Following the completion of my PhD, I continued my research journey with the Politics department, contributing to projects centred around environmental activism, the political landscape including the rise of Corbyn, and intriguing questions such as <a href="https://journals.sagepub.com/doi/abs/10.1177/2399654419825654" target="_blank">'Why did Cornwall vote for Brexit?'</a>.
+            </p>
+            <p>
+              
             </p>
             </div>
             <div className={styles.academiaImage}>
