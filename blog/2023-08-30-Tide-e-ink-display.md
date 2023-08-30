@@ -4,8 +4,8 @@ title: Building a Tide Information Display with Raspberry Pi and E-Paper - High 
 description: Creating a Tide Information Display with an e-paper screen and a Raspberry Pi Zero. 
 authors: passmore
 tags: [Raspberry Pi, E-Paper Display, DIY Projects, Beginner Friendly, Python]
-image: https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg
-draft: true
+image: https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.45.jpg
+draft: false
 ---
 
 
@@ -77,7 +77,6 @@ python3 main.py
 On first time running it will request an API key. The following section covers setting up the API key:
 
 ## Collecting Tide Data
-
 
 For UK data I am using the [admiral API](https://admiraltyapi.portal.azure-api.net/), in particular, I am using the [UK Tidal API - Discovery](https://admiraltyapi.portal.azure-api.net/docs/services/uk-tidal-api/operations/TidalEvents_GetTidalEvents?), which has a maxium API calls of 10,000 per month.
 
@@ -239,11 +238,41 @@ The goals I had for this project was:
 
 ### Loading screen
 
+The loading screen displays either the lowest or highest tide level.
 
+![Loading Display](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.54.jpg)
+
+There is a random selection which then grabs the relevant data to display.
+
+```python
+# Selection process for whether the loading screen shows low or high tide record
+previousRecords = ["high", "low"]
+selection = random.choice(previousRecords) 
+
+# If high tide recorded select it provides the height, date and time recorded. Along with start date the screen has been running from
+if selection == "high":
+    highest_tide_datetime = datetime.strptime(highestTideDate, "%Y-%m-%d %H:%M:%S")
+    daterecorded = highest_tide_datetime.strftime("%Y-%m-%d")
+    timerecorded = highest_tide_datetime.strftime("%H:%M:%S")
+    drawLoadBlack.text((15, 35), f'Highest Height: {float(highHeight):.2f} m', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 52), f'Recorded: {daterecorded}', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 67), f'At: {timerecorded[0:5]}', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 82), f'Recording Since {startDate}', font=robotoblack14, fill=0)
+        
+        # If low tide recorded select it provides the height, date and time recorded. Along with start date the screen has been running from
+else: 
+    lowest_tide_datetime = datetime.strptime(lowestTideDate, "%Y-%m-%d %H:%M:%S")
+    daterecorded = lowest_tide_datetime.strftime("%Y-%m-%d")
+    timerecorded = lowest_tide_datetime.strftime("%H:%M:%S")
+    drawLoadBlack.text((15, 35), f'Lowest Height: {float(lowHeight):.2f} m', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 52), f'Recorded: {daterecorded}', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 67), f'At: {timerecorded}', font=robotoblack18, fill=0)
+    drawLoadBlack.text((15, 82), f'Recording Since {startDate}', font=robotoblack14, fill=0)
+```
 
 ### Main Screen
 
-
+![Main Display](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.45.jpg)
 
 ### Error Screen
 
@@ -265,7 +294,7 @@ draw_other.rectangle((0, 31, 5, 104), fill=0)
 draw_other.rectangle((207, 0, 212, 104), fill=0)
 ```
 
-This simply draws out red borders 
+This simply draws out a clear error message.
 
 ## Updating the display
 
