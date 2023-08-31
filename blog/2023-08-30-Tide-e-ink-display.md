@@ -13,7 +13,7 @@ Interested in the current ebb and flow of the tides? Using a Raspberry Pi Zero 2
 
 In this guide, I will walk you through the steps to build a tide information display that provides frequent updates on tide height and corresponding times of high and low tide. Dive in and embark on this exciting project to stay connected with the rhythm of the ocean.
 
-![Tide Display Example](https://personalblogimages.blob.core.windows.net/websiteimages/vi_4068_20230531_103359.mp4.v4068.th.jpg)
+![Tide Display Example](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.45.jpg)
 
 <!--truncate-->
 
