@@ -1,19 +1,19 @@
 ---
 slug: raspberry-pi-tide-information-display-epaper
-title: Building a Tide Information Display with Raspberry Pi and E-Paper - High Tide, Low Tide, and More!
-description: Creating a Tide Information Display with an e-paper screen and a Raspberry Pi Zero. 
+title: Building a Tide Information Display with Raspberry Pi and E-Paper Screen - High Tide, Low Tide, and More!
+description: Creating a tide information display with an e-paper screen and a Raspberry Pi Zero. 
 authors: passmore
 tags: [Raspberry Pi, E-Paper Display, DIY Projects, Beginner Friendly, Python]
-image: https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.45.jpg
+image: https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-09-02%20at%2017.29.50.jpg
 draft: false
 ---
 
 
-Interested in the current ebb and flow of the tides? Using a Raspberry Pi Zero 2 and an E-Paper display, you can create an informative low powered tide display. [The code for this project can be found on my github.](https://github.com/Dr-Passmore/e-paper-tidal-info-project)
+Interested in the current ebb and flow of the tides? Using a Raspberry Pi Zero 2 and an E-Paper display, you can create an informative a low powered tide display. [The code for this project can be found on my github.](https://github.com/Dr-Passmore/e-paper-tidal-info-project)
 
 In this guide, I will walk you through the steps to build a tide information display that provides frequent updates on tide height and corresponding times of high and low tide. Dive in and embark on this exciting project to stay connected with the rhythm of the ocean.
 
-![Tide Display Example](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.45.jpg)
+![Swanpool Beach, Falmouth](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-09-02%20at%2017.29.35.jpg)
 
 <!--truncate-->
 
@@ -27,12 +27,12 @@ The project requires only the following parts:
 - [E-Paper Display](https://thepihut.com/products/three-colour-2-13-eink-display-phat-red-black-white)
 - [Raspberry Pi 0 E-Paper Case](https://thepihut.com/products/pi-zero-case-for-waveshare-2-13-eink-display)
 - Micro SD Card
-- Micro USB wire for power
+- A Micro USB wire for power
 
 ## Setting Up the Hardware
 
 1. Solder the header pins to the Raspberry Pi Zero (Skip if you purchased a board with pre soldered header pins)
-2. Create [SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+2. Create [the SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
 3. Insert micro SD card
 4. Construct the case
 5. Connect the E-Paper Display to your Raspberry Pi pins.
@@ -43,7 +43,7 @@ The project requires only the following parts:
 10. Install the required libraries
 11. Run test code to confirm screen is working
 
-### Library Installs
+### The Library Installs
 
 ```bash
     sudo apt-get update
@@ -52,6 +52,7 @@ The project requires only the following parts:
     sudo apt-get install python3-numpy
     sudo pip3 install RPi.GPIO
     sudo pip3 install spidev
+    sudo pip3 install pytz
 ```
 
 ### Screen Test
@@ -74,7 +75,9 @@ cd e-paper-tidal-info-project
 python3 main.py
 ```
 
-On first time running it will request an API key. The following section covers setting up the API key:
+![Working Screen](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-09-02%20at%2017.29.50.jpg)
+
+On first time running it will request an API key which is stored in the config file `config.ini`. The following section covers setting up the API key:
 
 ## Collecting Tide Data
 
@@ -240,9 +243,9 @@ The goals I had for this project was:
 
 The loading screen displays either the lowest or highest tide level.
 
-![Loading Display](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.54.jpg)
+![Loading Display Lowest Tide](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-08-30%20at%2018.43.54.jpg)
 
-There is a random selection which then grabs the relevant data to display.
+There is a random selection which then grabs the relevant data from the config.ini to display.
 
 ```python
 # Selection process for whether the loading screen shows low or high tide record
@@ -259,7 +262,7 @@ if selection == "high":
     drawLoadBlack.text((15, 67), f'At: {timerecorded[0:5]}', font=robotoblack18, fill=0)
     drawLoadBlack.text((15, 82), f'Recording Since {startDate}', font=robotoblack14, fill=0)
         
-        # If low tide recorded select it provides the height, date and time recorded. Along with start date the screen has been running from
+# If low tide recorded select it provides the height, date and time recorded. Along with start date the screen has been running from
 else: 
     lowest_tide_datetime = datetime.strptime(lowestTideDate, "%Y-%m-%d %H:%M:%S")
     daterecorded = lowest_tide_datetime.strftime("%Y-%m-%d")
@@ -269,6 +272,10 @@ else:
     drawLoadBlack.text((15, 67), f'At: {timerecorded}', font=robotoblack18, fill=0)
     drawLoadBlack.text((15, 82), f'Recording Since {startDate}', font=robotoblack14, fill=0)
 ```
+
+![Loading Display Highest Tide](https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-09-02%20at%2017.30.23.jpg)
+
+The loading screen only shows for a minute. I found it interesting to keep track of the highest and lowest tide, so added the loading screen. Due to the limitations of screen size, I used the random selection to prevent the screen being to busy.  
 
 ### Main Screen
 
@@ -332,9 +339,7 @@ def progressBar(progress):
         
 ```
 
-Once this draw 
-
-
+Once this function has returned the int, an additional 30 is added as this takes into account the border of the screen.
 
 ### Error Screen
 
@@ -386,6 +391,32 @@ Now the script will run every 15 minutes.
 
 ## Conclusion
 
-With your Raspberry Pi and E-Paper display working together, you'll have a dynamic tide information display that keeps you informed about the local tides. Whether you're a beach enthusiast or a curious learner, this project adds a touch of technology to the natural rhythm of the ocean. Enjoy watching the tides roll in and out right from the comfort of your home!
+Finally, we have a e-paper display updating every 15 minutes to inform you of the current tide height, the times of low tide, and high tide. As normal the development time really came from the e-paper display. Mainly due to the time it takes to update the code, commit the code, `git pull` on the Raspberry Pi, and then wait for the display to load. Perhaps in the future, I may look at this project again. I already have an idea for a larger version, taking images at Swanpool at different tide heights and converting them to black and white images for a e-paper disply in a picture frame. 
 
-For more DIY projects and Raspberry Pi fun, stay tuned to our blog!
+Even with the effort e-paper displays take to get set up, I do find them deeply rewarding projects to complete.
+
+## Update
+
+I noticed that the tide information was slightly off. I was walking by Swanpool beach after I had seen low tide was an hour before... Only for the tide to clearly be at the lowest point.
+
+Turns out I overlooked `British Summer Time` when I compared a Falmouth tide information data source.
+
+To resolve this issue, I have used the pytz module to update the time captured from the API so it is in the correct time zone. An additional, function has been added to ***main.py***:
+
+```python
+def updateTimeZone(self, eventTime):
+        """
+        Converts a datetime string to the 'Europe/London' time zone.
+
+        Input:
+        - eventTime: A datetime string in the format '%Y-%m-%dT%H:%M:%S'.
+
+        Output:
+        - A string representation of the datetime in 'Europe/London' time zone.
+        """
+        local_tz = pytz.timezone("Europe/London")
+        eventTime = datetime.datetime.strptime(eventTime, '%Y-%m-%dT%H:%M:%S')
+        return str(eventTime.replace(tzinfo=pytz.utc).astimezone(local_tz))
+```
+
+Now this function has been added the problem has been resolved. Amusingly, I was rather confident in my data, I did not think to compare to another data source. Lesson learnt!
