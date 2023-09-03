@@ -48,11 +48,17 @@ function About() {
 
           <h3>IT Experience</h3>
 
-          <p><a href="https://www.linkedin.com/in/phillippassmore/" target="_blank">I have undertaken a range of IT experience</a></p>
+          <p>Prior to my career in IT, I was always interested and engaging with tech projects. I picked up a Raspberry Pi during my PhD to use for Network Allocated Storage, piHole, and a Calibre library for my eBooks.</p>
+
+          <p>I have undertaken a range of IT <a href="https://www.linkedin.com/in/phillippassmore/" target="_blank">experience</a>. This includes work as an End User Experience Engineer at Royal Cornwall NHS Hospitals Trust[RCHT], nothing to do with User Interface[UI] design, but instead was a mix of configuation management (mobile devices and SCCM engineer) and cyber Security Analyst. While this was a job with a low quality job title, it did result in a job interview experience where they added a member to the panel with UI design experience to ask questions on my UI design experience. Still it was overall a very positive experience, and was my first role which I worked with PowerShell regularly</p>
+
+          <p>After 2 years I left the End User Experience Team to become an automation specialist in the Data Warehouse at RCHT. An interesting aspect to this job was the plan to migrate the Data Warehouse to Azure. Fortunately we had free access to Azure training and Azure Microsoft Certs to enable to team to upskill. I took this opportunity to complete a wide range of Azure skills including the majority of the data certs, solution design, and Security Engineer cert. Eventually, the migration to Azure was put on long term hold, but not before I had gained a large amount of Azure knowledge</p>
+
+          
 
           <h3>Azure Certifications</h3>
 
-          <p>I have undertaken a wide range of Azure training and continue to develop my Azure knowledge. I have been fortunate to able to complete a range of Microsoft certs including all 8 of the fundamental certs and the following certs:</p>
+          <p> I currently hold 17 Microsoft Azure certs including all 8 of the fundamental certs and the following certs:</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
               <a href="https://www.credly.com/badges/b2a71c42-6396-4dd0-8f5d-261a46be4879/public_url" target="_blank">
