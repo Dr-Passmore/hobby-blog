@@ -50,66 +50,66 @@ function About() {
 
           <p>Prior to my career in IT, I was always interested and engaging with tech projects. I picked up a Raspberry Pi during my PhD to use for Network Allocated Storage, piHole, and a Calibre library for my eBooks.</p>
 
-          <p>I have undertaken a range of IT <a href="https://www.linkedin.com/in/phillippassmore/" target="_blank">experience</a>. This includes work as an End User Experience Engineer at Royal Cornwall NHS Hospitals Trust[RCHT], nothing to do with User Interface[UI] design, but instead was a mix of configuation management (mobile devices and SCCM engineer) and cyber Security Analyst. While this was a job with a low quality job title, it did result in a job interview experience where they added a member to the panel with UI design experience to ask questions on my UI design experience. Still it was overall a very positive experience, and was my first role which I worked with PowerShell regularly</p>
+          <p>I have undertaken a range of IT <a href="https://www.linkedin.com/in/phillippassmore/" target="_blank">experience</a>. This includes work as an End User Experience Engineer at Royal Cornwall NHS Hospitals Trust[RCHT], nothing to do with User Interface[UI] design, but instead was a mix of configuation management (mobile devices and SCCM engineer) and cyber security analyst. Unfortunately, this is an example where a confusing job title can result in employers jumping to conclusions. I did end up in job interview where they had added a member to the panel with UI design experience to ask questions on my UI design experience. Still it was overall a very positive experience, and was my first role where I worked with PowerShell regularly. I was able to gain a wide range of IT experience in the role</p>
 
-          <p>After 2 years I left the End User Experience Team to become an automation specialist in the Data Warehouse at RCHT. An interesting aspect to this job was the plan to migrate the Data Warehouse to Azure. Fortunately we had free access to Azure training and Azure Microsoft Certs to enable to team to upskill. I took this opportunity to complete a wide range of Azure skills including the majority of the data certs, solution design, and Security Engineer cert. Eventually, the migration to Azure was put on long term hold, but not before I had gained a large amount of Azure knowledge</p>
+          <p>After 2 years I left the End User Experience Team to become an automation specialist in the Data Warehouse at RCHT. An interesting aspect to this job was the plan to migrate the Data Warehouse to Azure. Fortunately, we had free access to Azure training and Azure Microsoft Certs to enable to team to upskill. I took this opportunity to complete a wide range of Azure skills including the majority of the data, infrastructure, and Security certs. Eventually, the migration to Azure was put on long term hold, but not before I had gained a large amount of Azure knowledge.</p>
 
-          
+          <p>Thanks to the opportunity to be involved in an Azure Migration, I now work as a Cloud Architect.</p>
 
           <h3>Azure Certifications</h3>
 
           <p> I currently hold 17 Microsoft Azure certs including all 8 of the fundamental certs and the following certs:</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/b2a71c42-6396-4dd0-8f5d-261a46be4879/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/3B1079223C054FF8?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20AI%20Engineer.png" alt="Microsoft Certified: Azure AI Engineer Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure AI Engineer</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/11a8ef41-13a7-4155-9716-14f9eebbc185/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/26F3DEA6A1DE0007?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Data%20Engineer.png" alt="Microsoft Certified: Azure Data Engineer Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Data Engineer Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/c0796af2-b670-4357-b88b-77bfc0c8f133/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/8C608FC860F589F?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Data%20Scientist.png" alt="Microsoft Certified: Azure Data Scientist Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Data Scientist Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/1e14d2f0-c762-44cf-81c4-f0bea8e7183c/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/1B3E5F69ED309CF1?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Power%20BI.png" alt="Microsoft Certified: Power BI Data Analyst Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Power BI Data Analyst Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/d584a8bf-508d-46c6-be47-9bb1f6d782f9/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/4D9678B140919E6C?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Azure%20Solutions%20Architect.png" alt="Microsoft Certified: Azure Solutions Architect Expert Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Solutions Architect Expert</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/92086066-f3bd-4e3c-aae7-83d289e7e49f/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/2B6449917E999664?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Azure%20Admin.png" alt="Microsoft Certified: Azure Administrator Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Administrator Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/fcce36b4-0406-4162-a3ee-084373d07ffc/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/AEA96780E1F9E015?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Azure%20Security%20Engineer.png" alt="Microsoft Certified: Azure Security Engineer Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure Security Engineer Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/9a8c2170-7d0a-474e-8dc1-aa3f516325ba/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/1E96DEBEF211EA30?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20Identity%20and%20Access.png" alt="Microsoft Certified: Identity and Access Administrator Associate Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Identity and Access Administrator Associate</p>
               </a>
             </div>
             <div className={styles.certificate}>
-              <a href="https://www.credly.com/badges/4b6d71c7-3ede-4388-bcb8-64b75d11aa3b/public_url" target="_blank">
+              <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/173A7D9665B1BF66?sharingId=441B641F23E43659" target="_blank">
                 <img src="https://personalblogimages.blob.core.windows.net/websiteimages/MS%20Cert%20IOT%20Dev.png" alt="Microsoft Certified: Azure IoT Developer Specialty Badge" />
                 <p className={styles.certificateTitle}>Microsoft Certified: Azure IoT Developer Specialty</p>
               </a>
