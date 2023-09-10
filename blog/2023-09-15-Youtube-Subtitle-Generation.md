@@ -22,6 +22,16 @@ In this blog, I will explore how to harness the power of Python to create a prog
 
 ## Overview
 
+The core goals of this project are:
 
+1. User friendly design
 
-## Set up
+2. Support extracting an MP3 from an existing YouTube video
+
+3. Being able to process an MP3 file
+
+4. Easy Initial setup of API key
+
+Ideally, this software will be something my partner can easily run to quickly generate subtitles for new videos in future. Through supporting both MP3 files and existing YouTube videos, she will be able to process a video either before upload (create an MP3 export from `Adobe Premiere Pro`) to be process or later on using the URL of the Youtube video. 
+
+### Set up
