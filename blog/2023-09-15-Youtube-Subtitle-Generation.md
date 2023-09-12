@@ -36,9 +36,11 @@ Ideally, this software will be something my partner can easily run to quickly ge
 
 ## Set up
 
-### API 
+### API
 
-To support the user friendly design, I have included a check to see if the config file exists (`config.ini`). If the config files does not exist then a user interface is opened to enable easy input of the API key. 
+The Speech to Text API used in this project is [`Leopard`](https://console.picovoice.ai/) by Picovoice. The free tier allows for 25 hours of audio to be processed per month and runs locally. Additional infomormation can be found in their [`Leopard Speech-to-Text`](https://picovoice.ai/docs/leopard/) doc.
+
+To support the user friendly design, I have included a check to see if the config file exists (`config.ini`). If the config files does not exist then a user interface is opened to enable easy input of the API key.
 
 ```python
 configFile = os.path.exists('config.ini')
@@ -80,9 +82,7 @@ def apiInterface(self):
 
 There are two additional functions to enable this API key set up to work. 
 
-Firstly, we have the `saveAPIKey` function. This writes the inputted API key to the config file for use later by the software. 
-
-
+Firstly, we have the `saveAPIKey` function. This writes the inputted API key to the config file for use later by the software.
 
 ```python
 
@@ -104,7 +104,7 @@ Firstly, we have the `saveAPIKey` function. This writes the inputted API key to 
         self.window.destroy()
 ```
 
-Secondly, including the link to [setup API Key](https://console.picovoice.ai/") is entirely more helpful if the user to be able to click the link. This opens a browser and enables them to register. Once registered they can get their API key from the console. 
+Secondly, including the link to [setup API Key](https://console.picovoice.ai/") is entirely more helpful if the user to be able to click the link. This opens a browser and enables them to register. Once registered they can get their API key from the console.
 
 ```python
     def openLink(self):
@@ -114,4 +114,3 @@ Secondly, including the link to [setup API Key](https://console.picovoice.ai/") 
         webbrowser.open("https://console.picovoice.ai/")
 
 ```
-
