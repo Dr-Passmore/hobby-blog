@@ -17,7 +17,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Personally, I enjoy coding and have found that Python has become my go to language, but I have experience with a range of languages. I'm going to be showcasing any exciting coding projects I'm working on.
+        I have experience with a range of languages, but my go to language has become Python. I'm going to be showcasing any exciting coding projects I'm working on.
       </>
     ),
   },
