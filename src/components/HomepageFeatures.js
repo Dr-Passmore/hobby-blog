@@ -8,8 +8,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Explore my passion for technology in the world of electronics, with a special focus on microcontrollers! I will be documenting my ongoing projects. 
       </>
     ),
   },
@@ -18,7 +17,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Personally, I enjoy coding and have found that Python has become my go to language. I'm going to be showcases any exciting coding projects I'm working on.
+        Personally, I enjoy coding and have found that Python has become my go to language, but I have experience with a range of languages. I'm going to be showcasing any exciting coding projects I'm working on.
       </>
     ),
   },
