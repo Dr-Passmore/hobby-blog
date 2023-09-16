@@ -26,7 +26,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        I'll be sharing my knowledge and documenting fascinating home projects that showcase the power and versatility of cloud technology.
+        I'll be sharing my knowledge and documenting fascinating home projects that showcase the power and versatility of cloud technology. I have become highly specilaised in Microsoft Azure.
         
       </>
     ),
