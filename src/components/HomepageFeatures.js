@@ -18,8 +18,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Personally, I enjoy coding and have found that Python has become my go to language. I'm going to be showcases any exciting coding projects I'm working on.
       </>
     ),
   },
@@ -28,9 +27,8 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        The cloud offers a great range of opportunities for projects. I'm experienced in Azure and will be documentating interesting home projects.  
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        I'll be sharing my knowledge and documenting fascinating home projects that showcase the power and versatility of cloud technology.
+        
       </>
     ),
   },
