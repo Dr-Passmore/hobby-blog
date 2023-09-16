@@ -28,6 +28,7 @@ const FeatureList = [
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
+        The cloud offers a great range of opportunities for projects. I'm experienced in Azure and will be documentating interesting home projects.  
         Extend or customize your website layout by reusing React. Docusaurus can
         be extended while reusing the same header and footer.
       </>

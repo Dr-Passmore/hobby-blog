@@ -58,7 +58,7 @@ function About() {
 
           <h3>Azure Certifications</h3>
 
-          <p> I currently hold 17 Microsoft Azure certs including all 8 of the fundamental certs and the following certs:</p>
+          <p> I currently hold 17 Microsoft Azure certs, including all 8 of the fundamental certs:</p>
           <div className={styles.certsContainer}>
           <div className={styles.certificate}>
               <a href="https://learn.microsoft.com/api/credentials/share/en-us/89822904/3B1079223C054FF8?sharingId=441B641F23E43659" target="_blank">
