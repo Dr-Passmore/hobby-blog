@@ -32,7 +32,7 @@ The core goals of this project are:
 
 4. Easy Initial setup of API key
 
-Ideally, this software will be something my partner can easily run to quickly generate subtitles for new videos in future. Through supporting both MP3 files and existing YouTube videos, she will be able to process a video either before upload (create an MP3 export from `Adobe Premiere Pro`) to be process or later on using the URL of the Youtube video. 
+Ideally, this software will be something my partner can easily run to quickly generate subtitles for new videos in future. Through supporting both MP3 files and existing YouTube videos, she will be able to process a video either before upload (create an MP3 export from `Adobe Premiere Pro`) to be process or later on using the URL of the Youtube video.
 
 ## Set up
 
@@ -50,7 +50,7 @@ configFile = os.path.exists('config.ini')
             captionCreation.apiInterface(self)
 ```
 
-The API interface is a small 300x200 screen with the clear title of "API Key Setup", a quick bit of info on where you can get the API key from, and a save button. 
+The API interface is a small 300x200 screen with the clear title of "API Key Setup", a quick bit of info on where you can get the API key from, and a save button.
 
 ```python
 def apiInterface(self):

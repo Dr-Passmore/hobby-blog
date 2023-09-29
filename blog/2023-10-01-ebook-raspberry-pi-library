@@ -1,0 +1,43 @@
+---
+slug: raspberry-ebook-solution
+title: Crafting a Magical eBook Library with Docker and Calibre - A Gift for Your Master's Degree Pursuit
+description: Creating a Raspberry Pi eBook library solution 
+authors: passmore
+tags: [Raspberry Pi, Docker, Calibre, DIY Projects, Beginner Friendly]
+image: https://personalblogimages.blob.core.windows.net/websiteimages/Python-caption-generation-processed.jpg
+draft: true
+---
+
+<!--truncate-->
+
+## Overview
+
+The core goals of this project are:
+
+1. Provide an easily accessible eBook library
+2. Power down and automatic start on boot up of key services 
+3. Enable easy access to add new content to calibre libraries
+4. Back up content of Calibre Library to Azure
+
+### Required Parts
+
+- Raspberry Pi (I'm using a Raspberry pi 4 2GB model)
+- SD card
+- Case
+
+## Setting up the hardware
+
+1. Create [the SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+2. Insert micro SD card
+3. Construct the case
+4. Connect power to Raspberry Pi
+5. Test that you can connect via terminal that the Raspberry Pi is Running.
+
+### Docker
+
+### Calibre
+
+
+
+
+
