@@ -3,10 +3,12 @@ slug: raspberry-ebook-solution
 title: Crafting a Magical eBook Library with Docker and Calibre - A Gift for Your Master's Degree Pursuit
 description: Creating a Raspberry Pi eBook library solution 
 authors: passmore
-tags: [Raspberry Pi, Docker, Calibre, DIY Projects, Beginner Friendly]
+tags: [Raspberry Pi, Docker, Calibre, DIY Projects, Azure, Beginner Friendly]
 image: https://personalblogimages.blob.core.windows.net/websiteimages/Python-caption-generation-processed.jpg
 draft: true
 ---
+
+In the age of digital information, having quick access to a vast collection of eBooks and academic resources can be a game-changer for students and avid readers alike. If you're pursuing a master's degree or simply have a passion for literature, building your own eBook library is a rewarding project that offers convenience and customisation. In this guide, I will take you on a journey to create a Raspberry Pi-powered eBook library that's not only easily accessible but also boasts the ability to power down and start key services automatically. Plus, I will show you how to effortlessly add new content to your library and even set up a backup solution to ensure your literary treasures are safe. Whether you're a tech enthusiast or a beginner looking for a DIY project, this tutorial will transform your Raspberry Pi into a literary treasure chest.
 
 <!--truncate-->
 
@@ -15,7 +17,7 @@ draft: true
 The core goals of this project are:
 
 1. Provide an easily accessible eBook library
-2. Power down and automatic start on boot up of key services 
+2. Power down and automatic start on boot up of key services
 3. Enable easy access to add new content to calibre libraries
 4. Back up content of Calibre Library to Azure
 
@@ -27,17 +29,135 @@ The core goals of this project are:
 
 ## Setting up the hardware
 
-1. Create [the SD card with image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
+1. Create [the SD card with the 64-bit image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
 2. Insert micro SD card
 3. Construct the case
 4. Connect power to Raspberry Pi
 5. Test that you can connect via terminal that the Raspberry Pi is Running.
+6. Update the Raspberry Pi
 
-### Docker
+```bash
+sudo apt update && sudo apt upgrade -y
+```
 
-### Calibre
+## Docker
 
+The following commands will install `Docker`:
 
+```bash
+sudo apt update
+sudo apt install docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
+```
 
+Now `Docker` has been successfully installed you will need to set up the `Calibre Container`
 
+### Calibre Container
 
+```bash
+docker pull linuxserver/calibre
+```
+
+Get PUID and PGID
+
+```bash
+id -p pi
+id -g pi
+```
+
+In the case of the user account `pi` both are *1000*.
+
+```bash
+mkdir calibre
+cd calibre
+mkdir config
+mkdir books
+```
+
+The following cmd is used to create the `calibre` container:
+
+```bash
+sudo docker run -d \
+   --name=calibre \
+   --restart=always \
+   -e PUID=1000 \
+   -e PGID=1000 \
+   -p 8080:8080 \
+   -p 8081:8081 \
+   -e TZ=Europe/London \
+   -v /calibre/books:/books \
+   -v /calibre/config:/config \
+   linuxserver/calibre
+```
+
+- **Command**: `sudo docker run -d`
+- **Container Name**: `--name=calibre`
+- **Restart Policy**: `--restart=always`
+- **User ID**: `-e PUID=1000`
+- **Group ID**: `-e PGID=1000`
+- **Port Mapping**: `-p 8080:8080` (Host:Calibre Book Management)
+- **Port Mapping**: `-p 8081:8081` (Host:Calibre Content Server)
+- **Timezone**: `-e TZ=Europe/London`
+- **Volume Mapping**: `-v /calibre/books:/books`
+- **Volume Mapping**: `-v /calibre/config:/config`
+- **Docker Image**: `linuxserver/calibre`
+
+## Adding books
+
+For this project, I'm making use of an Azure file share for the uploading of books and journal articles.
+
+Primarily, this is for ease of use. I have added the file share to both her desktop and laptop. This means she can easily add files, then add the content to Calibre , and finally, edit the metadata.
+
+- Add shared drive
+- mount share on startup
+
+### Setting up an Azure File Share
+
+1. Log In to the Azure Portal
+
+    - Open a web browser and navigate to the Azure portal.
+    - Sign in to your Azure account.
+
+2. Create a Storage Account
+
+    - In the Azure portal, click on "Create a resource" on the left sidebar.
+    - Search for "Storage account" in the search bar and select "Storage account" from the results.
+    - Click the "Create" button to start creating a new storage account.
+    - Fill in the required information for your storage account:
+        Subscription: Choose your Azure subscription.
+        Resource group: Create a new one or select an existing one.
+        Storage account name: Choose a unique name for your storage account.
+        Location: Select the region where you want to create the storage account.
+        Performance: Choose the performance tier (Standard or Premium).
+        Replication: Choose the replication option based on your redundancy requirements.
+    - Click the "Review + create" button to review your settings. Verify that everything is correct, and then click "Create" to create the storage account.
+    - Wait for the deployment to complete. You can monitor the deployment progress in the Azure portal.
+
+3. Create a File Share
+    - Once the storage account deployment is complete, go to the storage account's page.
+    - In the left menu, under "Settings," click on "File shares."
+    - Click the "+ File share" button to create a new file share.
+    - Provide a name for your file share, and you can also specify the quota (size) for the share.
+    - Click the "Create" button to create the file share.
+
+Add the following to /etc/fstab
+
+```bash
+//AZUREFILES /calibre/config/books-to-add/ cifs credentials=/etc/smbcredentials/homecloud.cred,dir_mode=0777,file_mode=0777,serverino,nosharesock,actimeo=30,uid=1000,gid=1000,nofail 0 0
+```
+
+- //AZUREFILES: This is the source location, which is the Azure File Share that you want to mount.
+- `/calibre/config/books-to-add/`: This is the target directory where the Azure File Share will be mounted on your local filesystem.
+- `cifs`: This specifies the filesystem type to use for the mount, which is Common Internet File System (CIFS), commonly used for networked file shares.
+- `credentials=/etc/smbcredentials/homecloud.cred`: It specifies the path to the credentials file that contains authentication information for accessing the Azure File Share. This file typically includes the username and password.
+- `dir_mode=0777`: This sets the directory permissions to allow read, write, and execute permissions for all users (readable, writable, and executable by the owner, group, and others).
+- `file_mode=0777`: This sets the file permissions to allow read, write, and execute permissions for all users (readable, writable, and executable by the owner, group, and others).
+- `serverino`: This option requests the server to return unique inode numbers for each file. It can help in case of conflicts or issues related to file identification.
+- `nosharesock`: This option disables the use of shared sockets, which can be used for communication between the client and the server.
+- `actimeo=30`: This sets the attribute cache timeout to 30 seconds, controlling how often the client will refresh attribute information from the server.
+- `uid=1000`: This sets the user ID (UID) for the mounted filesystem. In this case, it's set to `1000`.
+- `gid=1000`: This sets the group ID (GID) for the mounted filesystem. In this case, it's set to `1000`.
+- `nofail 0 0`: This option ensures that if the mount fails during boot, it won't prevent the system from starting up. The `nofail` option indicates that the system should continue to boot even if the mount fails.
+
+## Backup solution
