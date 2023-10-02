@@ -103,6 +103,11 @@ sudo docker run -d \
 - **Volume Mapping**: `-v /calibre/config:/config`
 - **Docker Image**: `linuxserver/calibre`
 
+
+
+
+
+
 ## Adding books
 
 For this project, I'm making use of an Azure file share for the uploading of books and journal articles.
@@ -159,5 +164,53 @@ Add the following to /etc/fstab
 - `uid=1000`: This sets the user ID (UID) for the mounted filesystem. In this case, it's set to `1000`.
 - `gid=1000`: This sets the group ID (GID) for the mounted filesystem. In this case, it's set to `1000`.
 - `nofail 0 0`: This option ensures that if the mount fails during boot, it won't prevent the system from starting up. The `nofail` option indicates that the system should continue to boot even if the mount fails.
+
+### Solution for mounting issue
+
+I have found an issue with the mount drive not showing up in Calibre. 
+
+```bash
+sudo nano /etc/systemd/system/calibre-delay-script.service
+```
+
+```bash
+[Unit]
+Description=Calibre Delayed Script
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 60
+ExecStart=/bin/mount -a && /usr/bin/docker restart calibre
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+sudo nano /etc/systemd/system/calibre-restart-script.service
+```
+
+```bash
+[Unit]
+Description=Calibre Delayed Script
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/sleep 60
+ExecStart=/usr/bin/docker restart calibre
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable calibre-delay-script.service
+sudo systemctl enable calibre-restart-script.service
+sudo reboot
+```
 
 ## Backup solution
