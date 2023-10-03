@@ -188,11 +188,15 @@ Add the following to /etc/fstab - Make sure you update the *//AZUREFILES* with y
 
 ### Solution for mounting issue
 
-I have found an issue with the mount drive not showing up in Calibre. 
+In deploying the Raspberry Pi, I have found an issue with the mount drive not showing up in Calibre. This appears to be an issue with the container loading before the drive has been mounted. A solution I have found that works successfully, has been the inclusion of two scripts in start up. The `calibre-delay-script.service` and `calibre-restart-script.service`. These scripts make sure the Azure share is mounted, and after a 60 second pause the second script runs which restarts the Calibre Docker container. This resolves the issue and the add books folder behaviours as expected.  
+
+Create the first script:
 
 ```bash
 sudo nano /etc/systemd/system/calibre-delay-script.service
 ```
+
+Copy and past the text below to create the drive mount script which runs the command `mount -a`:
 
 ```bash
 [Unit]
@@ -200,13 +204,15 @@ Description=Calibre Delayed Script
 
 [Service]
 Type=oneshot
-ExecStartPre=/bin/sleep 60
-ExecStart=/bin/mount -a && /usr/bin/docker restart calibre
+ExecStartPre=/bin/sleep 10
+ExecStart=/bin/mount -a
 RemainAfterExit=yes
 
 [Install]
 WantedBy=multi-user.target
 ```
+
+
 
 ```bash
 sudo nano /etc/systemd/system/calibre-restart-script.service
