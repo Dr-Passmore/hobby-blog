@@ -23,11 +23,18 @@ The core goals of this project are:
 
 ### Required Parts
 
+The following parts are required: 
+
 - Raspberry Pi (I'm using a Raspberry pi 4 2GB model)
-- SD card
+- Micro SD card
 - Case
+- USB-C to Power the Pi 
+
+As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the Raspberry Pi 4 kits (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile. 
 
 ## Setting up the hardware
+
+To get the Raspberry Pi up and running:
 
 1. Create [the SD card with the 64-bit image of Raspberry Pi OS](https://www.raspberrypi.com/documentation/computers/getting-started.html)
 2. Insert micro SD card
@@ -40,7 +47,11 @@ The core goals of this project are:
 sudo apt update && sudo apt upgrade -y
 ```
 
+At this point the Raspberry Pi is operational and fully updated. 
+
 ## Docker
+
+[Docker](https://docs.docker.com/get-started/overview/) enables applications to be run in containers. Enabling easy deployment and avoids potential compatibility issues between applications. 
 
 The following commands will install `Docker`:
 
@@ -55,18 +66,22 @@ Now `Docker` has been successfully installed you will need to set up the `Calibr
 
 ### Calibre Container
 
+To create the Calibre container you need to first pull the `linuxserver/calibre`. This will download the Calibre application to the Raspberry Pi.
+
 ```bash
 docker pull linuxserver/calibre
 ```
 
-Get PUID and PGID
+To set up the permissions of the container we need to get PUID and PGID IDs. You can run the following commands to get the user IDs. In this case my user account is callled `pi`
 
 ```bash
 id -p pi
 id -g pi
 ```
 
-In the case of the user account `pi` both are *1000*.
+In the case of the user account `pi` both have the ID value of *1000*.
+
+Next we need to create the folders that will store the config and books. I'm putting them in a parent folder `calibre`
 
 ```bash
 mkdir calibre
@@ -74,6 +89,8 @@ cd calibre
 mkdir config
 mkdir books
 ```
+
+Now we are ready to create the Calibre container. 
 
 The following cmd is used to create the `calibre` container:
 
@@ -90,6 +107,8 @@ sudo docker run -d \
    -v /calibre/config:/config \
    linuxserver/calibre
 ```
+
+For clarity the following command is broken down to make it easy to adapt if required:
 
 - **Command**: `sudo docker run -d`
 - **Container Name**: `--name=calibre`
