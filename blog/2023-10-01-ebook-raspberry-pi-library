@@ -66,7 +66,7 @@ Now `Docker` has been successfully installed you will need to set up the `Calibr
 
 ### Calibre Container
 
-To create the Calibre container you need to first pull the `linuxserver/calibre`. This will download the Calibre application to the Raspberry Pi.
+To create the [Calibre container](https://calibre-ebook.com/about) you need to first pull the `linuxserver/calibre`. This will download the Calibre application to the Raspberry Pi.
 
 ```bash
 docker pull linuxserver/calibre
