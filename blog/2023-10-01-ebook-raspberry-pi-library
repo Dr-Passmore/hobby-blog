@@ -28,7 +28,7 @@ The following parts are required:
 - Raspberry Pi (I'm using a Raspberry pi 4 2GB model)
 - Micro SD card
 - Case
-- USB-C to Power the Pi 
+- USB-C for Power 
 
 As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the Raspberry Pi 4 kits (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile. 
 
@@ -66,7 +66,7 @@ Now `Docker` has been successfully installed you will need to set up the `Calibr
 
 ### Calibre Container
 
-To create the [Calibre container](https://calibre-ebook.com/about) you need to first pull the `linuxserver/calibre`. This will download the Calibre application to the Raspberry Pi.
+[Calibre](https://calibre-ebook.com/about) has been selected as it provides an excellent e-book management system. To create the [Calibre container](https://hub.docker.com/r/linuxserver/calibre) you need to first pull `linuxserver/calibre`. This will download the Calibre container to the Raspberry Pi.
 
 ```bash
 docker pull linuxserver/calibre
@@ -122,19 +122,19 @@ For clarity the following command is broken down to make it easy to adapt if req
 - **Volume Mapping**: `-v /calibre/config:/config`
 - **Docker Image**: `linuxserver/calibre`
 
-
-
-
-
+I have included the **Restart Policy** so on reboot the Raspberry Pi will load Docker and then the Calibre Server will automatically start up. This also causes the container to restart in the unlikely event of the application crashing. 
 
 ## Adding books
 
 For this project, I'm making use of an Azure file share for the uploading of books and journal articles.
 
-Primarily, this is for ease of use. I have added the file share to both her desktop and laptop. This means she can easily add files, then add the content to Calibre , and finally, edit the metadata.
+Primarily, this is for ease of use. I have added the file share to both her desktop and laptop. This means she can easily add files, then add the content to Calibre, and finally, editing the metadata.
 
-- Add shared drive
-- mount share on startup
+To achieve this we need to:
+
+- Create an Azure File Share
+- Mount the shared drive
+- Automatically mount the share on startup
 
 ### Setting up an Azure File Share
 
@@ -159,13 +159,15 @@ Primarily, this is for ease of use. I have added the file share to both her desk
     - Wait for the deployment to complete. You can monitor the deployment progress in the Azure portal.
 
 3. Create a File Share
+
     - Once the storage account deployment is complete, go to the storage account's page.
     - In the left menu, under "Settings," click on "File shares."
     - Click the "+ File share" button to create a new file share.
     - Provide a name for your file share, and you can also specify the quota (size) for the share.
     - Click the "Create" button to create the file share.
 
-Add the following to /etc/fstab
+
+Add the following to /etc/fstab - Make sure you update the *//AZUREFILES* with your URL. 
 
 ```bash
 //AZUREFILES /calibre/config/books-to-add/ cifs credentials=/etc/smbcredentials/homecloud.cred,dir_mode=0777,file_mode=0777,serverino,nosharesock,actimeo=30,uid=1000,gid=1000,nofail 0 0
