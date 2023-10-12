@@ -30,7 +30,7 @@ The following parts are required:
 - Case
 - USB-C for Power 
 
-As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the Raspberry Pi 4 kits (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile. 
+As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the Raspberry Pi 4 kits (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile, even if it meant I ended up with a case I did not need. 
 
 ## Setting up the hardware
 
@@ -196,7 +196,7 @@ Create the first script:
 sudo nano /etc/systemd/system/calibre-delay-script.service
 ```
 
-Copy and past the text below to create the drive mount script which runs the command `mount -a`:
+Add the following content to the startup script to enable the mounting of the share. This scipt runs the command `mount -a` after a 10 second delay:
 
 ```bash
 [Unit]
@@ -212,11 +212,13 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 ```
 
-
+create the second script: 
 
 ```bash
 sudo nano /etc/systemd/system/calibre-restart-script.service
 ```
+
+Add the following content to the second startup script to enable the mounting of the share. This scipt runs the command `restart calire` after 60 second delay: 
 
 ```bash
 [Unit]
@@ -233,6 +235,8 @@ WantedBy=multi-user.target
 
 ```
 
+enable both the new scripts and reboot the Raspberry Pi
+
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable calibre-delay-script.service
@@ -241,3 +245,24 @@ sudo reboot
 ```
 
 ## Backup solution
+
+
+## Configure the Calibre Server
+
+By default you will get the Calibre Book Management on port 8080. In this admin window, you can go to preferences and enable the more user friendly Calibre Web server on port 8081. 
+
+You need to go to `perferences` > `Sharing` > `Sharing Over The Net`
+
+![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server1.png)
+
+Make sure you active the server on port 8081 and tick `automatically start when Calibre starts`
+
+![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server2.png)
+
+The web portal on port 8081 enables easy browsing between libraries. 
+
+![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-libraries.png)
+
+Content can either be read in browser or downloaded to local device. 
+
+![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-example.png)
