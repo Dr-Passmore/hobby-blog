@@ -391,7 +391,7 @@ Now the script will run every 15 minutes.
 
 ## Conclusion
 
-Finally, we have a e-paper display updating every 15 minutes to inform you of the current tide height, the times of low tide, and high tide. As normal the development time really came from the e-paper display. Mainly due to the time it takes to update the code, commit the code, `git pull` on the Raspberry Pi, and then wait for the display to load. Perhaps in the future, I may look at this project again. I already have an idea for a larger version, taking images at Swanpool at different tide heights and converting them to black and white images for a e-paper disply in a picture frame. 
+Finally, we have a e-paper display updating every 15 minutes to inform you of the current tide height, the times of low tide, and high tide. As normal the development time really came from the e-paper display. Mainly due to the time it takes to update the code, commit the code, `git pull` on the Raspberry Pi, and then wait for the display to load. Perhaps in the future, I may look at this project again. I already have an idea for a larger version, taking images at Swanpool at different tide heights and converting them to black and white images for a e-paper disply in a picture frame.
 
 Even with the effort e-paper displays take to get set up, I do find them deeply rewarding projects to complete.
 

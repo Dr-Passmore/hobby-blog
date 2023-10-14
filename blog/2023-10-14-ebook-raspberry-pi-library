@@ -67,7 +67,7 @@ Remember to create a Raspberry Pi OS using the **64 bit** version
 
 ## Docker
 
-[Docker](https://docs.docker.com/get-started/overview/) enables applications to be run in containers. Enabling easy deployment and avoids potential compatibility issues between applications. 
+[Docker](https://docs.docker.com/get-started/overview/) enables applications to be run in containers. Enabling easy deployment and avoids potential compatibility issues between applications.
 
 The following commands will install `Docker`:
 
@@ -82,7 +82,7 @@ Now `Docker` has been successfully installed you will need to set up the `Calibr
 
 ### Calibre Container
 
-[Calibre](https://calibre-ebook.com/about) has been selected as it provides an excellent e-book management system. Both 
+[Calibre](https://calibre-ebook.com/about) has been selected as it provides an excellent e-book management system. Both for managing metadata and browsing the ebook libraries.
 
 To create the [Calibre container](https://hub.docker.com/r/linuxserver/calibre) you need to first pull `linuxserver/calibre`. This will download the Calibre container to the Raspberry Pi.
 
@@ -108,7 +108,7 @@ mkdir config
 mkdir books
 ```
 
-Now we are ready to create the Calibre container. 
+Now we are ready to create the Calibre container.
 
 The following cmd is used to create the `calibre` container:
 
@@ -235,7 +235,7 @@ Create the second script:
 sudo nano /etc/systemd/system/calibre-restart-script.service
 ```
 
-Add the following content to the second startup script to enable the mounting of the share. This scipt runs the command `restart calire` after 60 second delay: 
+Add the following content to the second startup script to enable the mounting of the share. This scipt runs the command `restart calire` after 60 second delay:
 
 ```bash
 [Unit]
@@ -263,7 +263,7 @@ sudo reboot
 
 ## Configure the Calibre Server
 
-By default you will get the Calibre Book Management on port 8080. In this admin window, you can go to preferences and enable the more user friendly Calibre Web server on port 8081. 
+By default you will get the Calibre Book Management on port 8080. In this admin window, you can go to preferences and enable the more user friendly Calibre Web server on port 8081.
 
 You need to go to `perferences` > `Sharing` > `Sharing Over The Net`
 
