@@ -9,6 +9,8 @@ image: https://personalblogimages.blob.core.windows.net/websiteimages/calibre-pr
 
 In the age of digital information, having quick access to a vast collection of eBooks and academic resources can be a game-changer for students and avid readers alike. If you're pursuing a master's degree or simply have a passion for literature, building your own eBook library is a rewarding project that offers convenience and customisation. In this guide, I will take you on a journey to create a Raspberry Pi-powered eBook library that's not only easily accessible but also boasts the ability to power down and start key services automatically. Plus, I will show you how to effortlessly add new content to your library and even set up a backup solution to ensure your literary treasures are safe. Whether you're a tech enthusiast or a beginner looking for a DIY project, this tutorial will transform your Raspberry Pi into a literary treasure chest.
 
+![Calibre Project](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg)
+
 <!--truncate-->
 
 ## Table of Contents
@@ -283,5 +285,3 @@ Content can either be read in browser or downloaded to local device.
 ## Conclusion
 
 Now we have a fully functioning eBook management system, with easily accessible libraries over our home network. Calibre offers great tools for both the management of eBooks and for browsing the libraries. This turned into a really enjoyable project. Getting Docker working the Raspberry Pi initially I found to be problematic. Eventually, I switched from the 32 bit version of the operating system to the 64 bit version. This resolved the problem and enabled me to quickly get Docker and the Calibre container set up. Setting up an Azure File share was easy, but I did have to spend time trouble shooting why the Calibre Container could not see the content after a reboot. Fortunately, I enjoy problem solving IT issues, and found that mounting and restarting the Calibre container resolved the issue. After a couple of start up scripts were added, the ebook project worked as planned.
-
-![Calibre Project](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg)
