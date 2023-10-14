@@ -13,19 +13,6 @@ In the age of digital information, having quick access to a vast collection of e
 
 <!--truncate-->
 
-## Table of Contents
-
-1. [Overview](#overview)
-    1. [Required Parts](#required-parts)
-2. [Setting up the Hardware](#setting-up-the-hardware)
-3. [Docker](#docker)
-    1. [Calibre Container](#calibre-container)
-4. [Adding Books](#adding-books)
-    1. [Setting up an Azure File Share](#setting-up-an-azure-file-share)
-    2. [Solution for mounting issue](#solution-for-mounting-issue)
-5. [Configure the Calibre Server](#configure-the-calibre-server)
-6. [Conclusion](#conclusion)
-
 ## Overview
 
 The core goals of this project are:
