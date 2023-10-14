@@ -1,11 +1,10 @@
 ---
-slug: raspberry-ebook-solution
+slug: raspberry-pi-ebook-solution
 title: Crafting a Magical eBook Library with Docker and Calibre - A Gift for Your Master's Degree Pursuit
 description: Creating a Raspberry Pi eBook library solution 
 authors: passmore
 tags: [Raspberry Pi, Docker, Calibre, DIY Projects, Azure, Beginner Friendly]
 image: https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg
-draft: false
 ---
 
 In the age of digital information, having quick access to a vast collection of eBooks and academic resources can be a game-changer for students and avid readers alike. If you're pursuing a master's degree or simply have a passion for literature, building your own eBook library is a rewarding project that offers convenience and customisation. In this guide, I will take you on a journey to create a Raspberry Pi-powered eBook library that's not only easily accessible but also boasts the ability to power down and start key services automatically. Plus, I will show you how to effortlessly add new content to your library and even set up a backup solution to ensure your literary treasures are safe. Whether you're a tech enthusiast or a beginner looking for a DIY project, this tutorial will transform your Raspberry Pi into a literary treasure chest.
