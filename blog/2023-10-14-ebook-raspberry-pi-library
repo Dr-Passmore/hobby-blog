@@ -4,13 +4,26 @@ title: Crafting a Magical eBook Library with Docker and Calibre - A Gift for You
 description: Creating a Raspberry Pi eBook library solution 
 authors: passmore
 tags: [Raspberry Pi, Docker, Calibre, DIY Projects, Azure, Beginner Friendly]
-image: https://personalblogimages.blob.core.windows.net/websiteimages/Python-caption-generation-processed.jpg
-draft: true
+image: https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg
+draft: false
 ---
 
 In the age of digital information, having quick access to a vast collection of eBooks and academic resources can be a game-changer for students and avid readers alike. If you're pursuing a master's degree or simply have a passion for literature, building your own eBook library is a rewarding project that offers convenience and customisation. In this guide, I will take you on a journey to create a Raspberry Pi-powered eBook library that's not only easily accessible but also boasts the ability to power down and start key services automatically. Plus, I will show you how to effortlessly add new content to your library and even set up a backup solution to ensure your literary treasures are safe. Whether you're a tech enthusiast or a beginner looking for a DIY project, this tutorial will transform your Raspberry Pi into a literary treasure chest.
 
 <!--truncate-->
+
+## Table of Contents
+
+1. [Overview](#overview)
+    1. [Required Parts](#required-parts)
+2. [Setting up the Hardware](#setting-up-the-hardware)
+3. [Docker](#docker)
+    1. [Calibre Container](#calibre-container)
+4. [Adding Books](#adding-books)
+    1. [Setting up an Azure File Share](#setting-up-an-azure-file-share)
+    2. [Solution for mounting issue](#solution-for-mounting-issue)
+5. [Configure the Calibre Server](#configure-the-calibre-server)
+6. [Conclusion](#conclusion)
 
 ## Overview
 
@@ -19,18 +32,19 @@ The core goals of this project are:
 1. Provide an easily accessible eBook library
 2. Power down and automatic start on boot up of key services
 3. Enable easy access to add new content to calibre libraries
-4. Back up content of Calibre Library to Azure
 
 ### Required Parts
 
-The following parts are required: 
+The following parts are required:
 
 - Raspberry Pi (I'm using a Raspberry pi 4 2GB model)
 - Micro SD card
 - Case
-- USB-C for Power 
+- USB-C for Power
 
-As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the Raspberry Pi 4 kits (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile, even if it meant I ended up with a case I did not need. 
+As this is a simple Raspberry Pi project, the requirements are minimial. I did almost buy a Raspberry Pi case, and then found I already had a spare Raspberry Pi 4 case. During the Raspberry Pi shortage, on occassion the [Raspberry Pi 4 kits](https://thepihut.com/products/raspberry-pi-starter-kit) (SD card, Power supply, Case, and Raspberry Pi 4) would become avalible. Due to the difficulty in getting a Raspberry Pi at this time, paying the inflated price was worthwhile, even if it meant I ended up with a case I did not need at the time.
+
+![Raspberry Pi Deployed](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi-case.jpg)
 
 ## Setting up the hardware
 
@@ -47,7 +61,9 @@ To get the Raspberry Pi up and running:
 sudo apt update && sudo apt upgrade -y
 ```
 
-At this point the Raspberry Pi is operational and fully updated. 
+At this point the Raspberry Pi is operational and fully updated.
+
+Remember to create a Raspberry Pi OS using the **64 bit** version
 
 ## Docker
 
@@ -66,7 +82,9 @@ Now `Docker` has been successfully installed you will need to set up the `Calibr
 
 ### Calibre Container
 
-[Calibre](https://calibre-ebook.com/about) has been selected as it provides an excellent e-book management system. To create the [Calibre container](https://hub.docker.com/r/linuxserver/calibre) you need to first pull `linuxserver/calibre`. This will download the Calibre container to the Raspberry Pi.
+[Calibre](https://calibre-ebook.com/about) has been selected as it provides an excellent e-book management system. Both 
+
+To create the [Calibre container](https://hub.docker.com/r/linuxserver/calibre) you need to first pull `linuxserver/calibre`. This will download the Calibre container to the Raspberry Pi.
 
 ```bash
 docker pull linuxserver/calibre
@@ -122,7 +140,7 @@ For clarity the following command is broken down to make it easy to adapt if req
 - **Volume Mapping**: `-v /calibre/config:/config`
 - **Docker Image**: `linuxserver/calibre`
 
-I have included the **Restart Policy** so on reboot the Raspberry Pi will load Docker and then the Calibre Server will automatically start up. This also causes the container to restart in the unlikely event of the application crashing. 
+I have included the **Restart Policy** so on reboot the Raspberry Pi will load Docker and then the Calibre Server will automatically start up. This also causes the container to restart in the unlikely event of the application crashing.
 
 ## Adding books
 
@@ -166,8 +184,7 @@ To achieve this we need to:
     - Provide a name for your file share, and you can also specify the quota (size) for the share.
     - Click the "Create" button to create the file share.
 
-
-Add the following to /etc/fstab - Make sure you update the *//AZUREFILES* with your URL. 
+Add the following to /etc/fstab - Make sure you update the *//AZUREFILES* with your URL.
 
 ```bash
 //AZUREFILES /calibre/config/books-to-add/ cifs credentials=/etc/smbcredentials/homecloud.cred,dir_mode=0777,file_mode=0777,serverino,nosharesock,actimeo=30,uid=1000,gid=1000,nofail 0 0
@@ -188,7 +205,7 @@ Add the following to /etc/fstab - Make sure you update the *//AZUREFILES* with y
 
 ### Solution for mounting issue
 
-In deploying the Raspberry Pi, I have found an issue with the mount drive not showing up in Calibre. This appears to be an issue with the container loading before the drive has been mounted. A solution I have found that works successfully, has been the inclusion of two scripts in start up. The `calibre-delay-script.service` and `calibre-restart-script.service`. These scripts make sure the Azure share is mounted, and after a 60 second pause the second script runs which restarts the Calibre Docker container. This resolves the issue and the add books folder behaviours as expected.  
+In deploying the Raspberry Pi, I have found an issue with the mounted drive not showing up in Calibre. This appears to be an issue with the container loading before the drive has been mounted. A solution I have found that works successfully, has been the inclusion of two scripts in start up. The `calibre-delay-script.service` and `calibre-restart-script.service`. These scripts make sure the Azure share is mounted, and after a 60 second pause the second script runs which restarts the Calibre Docker container. This resolves the issue and the add books folder operates as expected.  
 
 Create the first script:
 
@@ -212,7 +229,7 @@ RemainAfterExit=yes
 WantedBy=multi-user.target
 ```
 
-create the second script: 
+Create the second script:
 
 ```bash
 sudo nano /etc/systemd/system/calibre-restart-script.service
@@ -244,25 +261,28 @@ sudo systemctl enable calibre-restart-script.service
 sudo reboot
 ```
 
-## Backup solution
-
-
 ## Configure the Calibre Server
 
 By default you will get the Calibre Book Management on port 8080. In this admin window, you can go to preferences and enable the more user friendly Calibre Web server on port 8081. 
 
 You need to go to `perferences` > `Sharing` > `Sharing Over The Net`
 
-![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server1.png)
+![Option menu](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server1.png)
 
 Make sure you active the server on port 8081 and tick `automatically start when Calibre starts`
 
-![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server2.png)
+![Web share menu](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-set-up-book-server2.png)
 
-The web portal on port 8081 enables easy browsing between libraries. 
+The web portal on port 8081 enables easy browsing between libraries.
 
-![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-libraries.png)
+![Select the libary screen](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-libraries.png)
 
-Content can either be read in browser or downloaded to local device. 
+Content can either be read in browser or downloaded to local device.
 
-![](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-example.png)
+![Example journal article](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-web-example.png)
+
+## Conclusion
+
+Now we have a fully functioning eBook management system, with easily accessible libraries over our home network. Calibre offers great tools for both the management of eBooks and for browsing the libraries. This turned into a really enjoyable project. Getting Docker working the Raspberry Pi initially I found to be problematic. Eventually, I switched from the 32 bit version of the operating system to the 64 bit version. This resolved the problem and enabled me to quickly get Docker and the Calibre container set up. Setting up an Azure File share was easy, but I did have to spend time trouble shooting why the Calibre Container could not see the content after a reboot. Fortunately, I enjoy problem solving IT issues, and found that mounting and restarting the Calibre container resolved the issue. After a couple of start up scripts were added, the ebook project worked as planned.
+
+![Calibre Project](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg)
