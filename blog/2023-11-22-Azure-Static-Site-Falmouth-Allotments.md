@@ -4,17 +4,21 @@ title: Falmouth Allotments Web Design using Azure Static Web Apps
 description: Redesign of the Falmouth Allotments Website and hosting the site using Azure Static Web App part 1
 authors: passmore
 tags: [Web Design, Azure, React, Github Actions, Static Web App, Terraform]
-image: https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg
+image: https://falmouthallotmentsweb.blob.core.windows.net/website-images/Falmouthallotmentspreview.webp
 draft: true
 ---
 
-<!--truncate-->
-
-## Overview
-
 I took over managing the [Falmouth Allotments website](https://falmouthallotments.org/) and needed to migrate the website from a previous hosting solution. I initially deployed the WordPress site to a `Standard B1s` virtual machine. However, a recent update ended up breaking the WordPress site and initial attempts to fix failed.
 
-What was looking like a headache to troubleshoot and resolve, this actually turned out to be an opportunity to redesign the site. When I took over managing the site, I had discussions with the committee about the website needing a redesign. Fortunately, the website going down was an impertus to begin this project.
+What was looking like a headache to troubleshoot and resolve, this actually turned out to be an opportunity to redesign the site. When I took over managing the site, I had discussions with the allotment committee about the website needing a redesign with some initial ideas being discussed. Fortunately, the website going down was an impertus to begin this project.
+
+![Falmouth Allotments Sunset](https://falmouthallotmentsweb.blob.core.windows.net/website-images/Falmouthallotmentspreview.webp)
+
+<!--truncate-->
+
+Moving away from an old Wordpress website with a focus on performance and cost reduction is an exciting project.
+
+## Overview
 
 The main goals I have for the new site are:
 
