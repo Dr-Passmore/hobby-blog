@@ -4,7 +4,7 @@ title: Falmouth Allotments Web Design using Azure Static Web Apps
 description: Redesign of the Falmouth Allotments Website and hosting the site using Azure Static Web App part 1
 authors: passmore
 tags: [Web Design, Azure, React, Github Actions, Static Web App, Terraform]
-image: https://falmouthallotmentsweb.blob.core.windows.net/website-images/Falmouthallotmentspreview.webp
+image: https://personalblogimages.blob.core.windows.net/websiteimages/Falmouthallotmentspreview.webp
 draft: true
 ---
 
@@ -12,11 +12,11 @@ I took over managing the [Falmouth Allotments website](https://falmouthallotment
 
 What was looking like a headache to troubleshoot and resolve, this actually turned out to be an opportunity to redesign the site. When I took over managing the site, I had discussions with the allotment committee about the website needing a redesign with some initial ideas being discussed. Fortunately, the website going down was an impertus to begin this project.
 
-![Falmouth Allotments Sunset](https://falmouthallotmentsweb.blob.core.windows.net/website-images/Falmouthallotmentspreview.webp)
+![Falmouth Allotments Sunset](https://personalblogimages.blob.core.windows.net/websiteimages/Falmouthallotmentspreview.webp)
 
 <!--truncate-->
 
-Moving away from an old Wordpress website with a focus on performance and cost reduction is an exciting project.
+Moving away from an old Wordpress website with a focus on performance, cost reduction, and accessibility is an exciting project to undertake.
 
 ## Overview
 
@@ -25,15 +25,17 @@ The main goals I have for the new site are:
 - Implement a modern clean design.
 - Reduce the quantity and size of images displayed.
 - The website has been designed with accessiblity in mind.
-- Replace all documents with either webforms or easily browserable pages (Rules and Constituation)
+- Replace all documents with either webforms or easily browserable pages (Rules and Constituation).
+- Significantly reduce hosting costs.
 
-To measure these goals I will be making Use of [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/#devtools) to generate page reports. This enables me to find not only identify performance impacts, but also any accessibility issues.
+To measure these goals I will be making Use of [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/#devtools) to generate page reports. This enables me to find not only identify performance impacts, but also any accessibility issues. In addition, I want to limit the environmental impact of the website. Fortunately, this can be measured using the [Website Carbon Calculator](https://www.websitecarbon.com) and essentially, carbon cost is limited by making sure the new website is efficiently designed.
 
 ## Azure
 
-To 
+For hosting the website I'm going to be deploying to Azure. I have already moved the old site to Azure using a `Standard B1s` virtual machine to host the old WordPress website. I have also seen this as an opportunity to practice [Terraform](https://www.terraform.io/). Terraform is Infrastructure By Code and is a great way to manage cloud infrastructure. Primarily, Terraform helps standardise and inherently documents the infrastructure set up. I admit from a time perspective it is very inefficient for a small project like this one, as I could have created everything in the portal in a fraction of the time required to get this set up.
 
 ### Terraform Deployment
+
 
 
 #### Key Terraform
