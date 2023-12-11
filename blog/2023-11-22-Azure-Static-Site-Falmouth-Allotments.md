@@ -36,15 +36,100 @@ For hosting the website I'm going to be deploying to Azure. I have already moved
 
 ### Terraform Deployment
 
+The 
+
+The gitaction workflow is designed to automate the deployment of Terraform configurations on Azure when changes are pushed to the specified branch (in this case, the master branch). Let's break down the key components of the workflow:
+
+```yaml
+name: Deploy Terraform
+
+on:
+  push:
+    branches:
+      - master
+```
+
+name: Specifies the name of the GitHub Actions workflow, in this case, "Deploy Terraform."
+
+on: Defines the trigger for the workflow. In this example, the workflow is triggered on each push to the master branch.
 
 
-#### Key Terraform
+```yaml
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+```
+
+    jobs: Describes the set of tasks to be executed as part of the workflow.
+
+    terraform: The name of the job, representing the Terraform deployment.
+
+    runs-on: Specifies the type of runner for the job. In this case, it runs on an Ubuntu environment.
+
+yaml
+
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+    steps: Defines a series of steps to be executed within the job.
+
+    Checkout code: Uses the GitHub Actions built-in action to checkout the source code repository at the latest commit.
+
+yaml
+
+  - name: Set up Terraform
+    uses: hashicorp/setup-terraform@v1
+    with:
+      terraform_version: 1.6.3
+
+    Set up Terraform: Utilizes the HashiCorp setup-terraform action to install and set up the specified version of Terraform.
+
+yaml
+
+  - name: Configure Azure CLI
+    run: |
+      az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
+      az account set --subscription ${{ secrets.ARM_SUBSCRIPTION_ID }}
+
+    Configure Azure CLI: Configures the Azure CLI with the necessary credentials using Azure service principal details stored as GitHub secrets.
+
+yaml
+
+  - name: List Azure Resources
+    run: |
+      az resource list --output table
+
+    List Azure Resources: Uses the Azure CLI to list resources in the specified Azure subscription.
+
+yaml
+
+  - name: Initialize and Set up Terraform Backend
+    run: |
+      terraform init -force-copy
+
+    Initialize and Set up Terraform Backend: Initializes the Terraform configuration and sets up the Terraform backend.
+
+yaml
+
+  - name: Apply Terraform
+    run: terraform apply -auto-approve
+
+    Apply Terraform: Executes the Terraform apply command with auto-approval to deploy the infrastructure specified in the Terraform configuration.
+
+This GitHub Actions workflow automates the process of deploying Terraform configurations on Azure, providing a streamlined and version-controlled approach to infrastructure management.
+
+#### Provider and Backend Terraform
 
 ```terraform
 provider "azurerm" {
     features {}
 }
+```
 
+In this section, the Terraform provider for Microsoft Azure, "azurerm," is declared. The features {} block is left empty, indicating the default configuration.
+
+```terraform
 # Back end storage of the terraform state file
 terraform {
   backend "azurerm" {
@@ -57,7 +142,23 @@ terraform {
 }
 ```
 
+In this section, the backend configuration for storing the Terraform state file is specified. The state file contains information about the infrastructure managed by Terraform. The backend is set to Azure Storage ("azurerm"). The configuration includes the following parameters:
+
+- **resource_group_name:** The name of the Azure Resource Group where the storage account for storing the Terraform state will reside. It is set to "tf-state-rg."
+
+- **storage_account_name:** This should be replaced with a unique name for the Azure Storage Account where the Terraform state file will be stored. It is recommended to replace `{UniqueStorageAccount}` with an actual, unique name.
+
+- **container_name:** The name of the container within the storage account. In this case, it is set to "tfstate."
+
+- **key:** The name of the Terraform state file, which is set to "terraform.tfstate."
+
+- **sas_token:** Shared Access Signature (SAS) token, which is currently left empty. If needed, a SAS token can be provided for secure access to the storage account.
+
+It's important to replace `{UniqueStorageAccount}` with a globally unique name for the storage account to avoid naming conflicts. Additionally, appropriate authentication and access controls should be configured for the storage account to ensure secure management of the Terraform state.
+
 #### Creating a Resource Group
+
+Now I need to create a Resource Group for the Falmouth Allotment website. The following section of code creates the resource group with the name `falmouth-allotment-website`:
 
 ```terraform
 resource "azurerm_resource_group" "falmouth_allotments_website" {
@@ -70,6 +171,12 @@ resource "azurerm_resource_group" "falmouth_allotments_website" {
   }
 }
 ```
+
+The name attribute sets the name of the Azure Resource Group to "falmouth-allotment-website," and location determines its Azure region, here specified as "west europe."
+
+The location is set to 'west europe' as we are limited on locations for Azure Static Web Apps. Otherwise I would deploy to UK South.
+
+Tags, like "environment" and "Falmouth_Allotments," provide metadata for better organisation—indicating a production environment and association with the Falmouth Allotments website.
 
 #### Creating a Storage Account
 
@@ -96,11 +203,19 @@ resource "azurerm_storage_container" "mystoragecontainer" {
 }
 ```
 
+In the above code, I have declared an Azure Storage Account named "falmouthallotmentsweb." The account is associated with the same resource group, location, and tags as the previously created Azure Resource Group for the Falmouth Allotments website.
+
+Additional settings declared are:
+
+- account_tier specifies the performance tier of the storage account as "Standard."
+
+- account_replication_type sets the replication type to "GRS" (Geo-Redundant Storage) for increased data durability.
+
 #### Creating Static Web Apps
 
-In this situation I need to route the existing DNS from the broken WordPress site, so I have created two Static Web Apps. The DNS will be updated to point at the production Static Web App, which will delivery a "Website Under Construction Message".
+To gracefully transition from a broken WordPress site, we are creating two Azure Static Web Apps, a development site and a production site. The existing DNS will be updated to point to the production Static Web App, where visitors will be greeted with a "Website Under Construction" message.
 
-![Temporary Website](https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi.jpg)
+The development site enables the full website solution to be tested before updating the pipeline to push to production.
 
 ```terraform
 # Development site
@@ -113,7 +228,11 @@ resource "azurerm_static_site" "under_construction" {
     Falmouth_Allotments  = "website"
   }
 }
+```
 
+Finally, the terraform code creates the production website. Initially, the under construction website will be hosted here and eventually replaced with the new website.
+
+```terraform
 # Production site
 resource "azurerm_static_site" "production_website" {
   name                = "Falmouth-Allotments-org"
@@ -126,8 +245,10 @@ resource "azurerm_static_site" "production_website" {
 }
 ```
 
-
 ## Web design
+
+
+![Temporary Website](https://personalblogimages.blob.core.windows.net/websiteimages/falmouth%20allotments%20temp%20page-1.webp)
 
 ### React setup
 
