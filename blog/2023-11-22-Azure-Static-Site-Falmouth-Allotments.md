@@ -53,18 +53,17 @@ name: Specifies the name of the GitHub Actions workflow, in this case, "Deploy T
 
 on: Defines the trigger for the workflow. In this example, the workflow is triggered on each push to the master branch.
 
-
 ```yaml
 jobs:
   terraform:
     runs-on: ubuntu-latest
 ```
 
-    jobs: Describes the set of tasks to be executed as part of the workflow.
+jobs: Describes the set of tasks to be executed as part of the workflow.
 
-    terraform: The name of the job, representing the Terraform deployment.
+terraform: The name of the job, representing the Terraform deployment.
 
-    runs-on: Specifies the type of runner for the job. In this case, it runs on an Ubuntu environment.
+runs-on: Specifies the type of runner for the job. In this case, it runs on an Ubuntu environment.
 
 yaml
 
