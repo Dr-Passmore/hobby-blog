@@ -36,9 +36,9 @@ For hosting the website I'm going to be deploying to Azure. I have already moved
 
 ### Terraform Deployment
 
-The 
+The terraform deployment requires a Azure service principal to be created in Azure Entra with contribution access to the subscription. Using a gitaction workflow I'm able to manage deployment of infrastructure by code.   
 
-The gitaction workflow is designed to automate the deployment of Terraform configurations on Azure when changes are pushed to the specified branch (in this case, the master branch). Let's break down the key components of the workflow:
+The gitaction workflow is designed to automate the deployment of Terraform configurations on Azure when changes are pushed to the specified branch (in this case, the master branch). I will break down the key components of the workflow:
 
 ```yaml
 name: Deploy Terraform
@@ -65,56 +65,53 @@ terraform: The name of the job, representing the Terraform deployment.
 
 runs-on: Specifies the type of runner for the job. In this case, it runs on an Ubuntu environment.
 
-yaml
-
+```yaml
 steps:
   - name: Checkout code
     uses: actions/checkout@v2
+```
 
-    steps: Defines a series of steps to be executed within the job.
+steps: Defines a series of steps to be executed within the job.
 
-    Checkout code: Uses the GitHub Actions built-in action to checkout the source code repository at the latest commit.
+Checkout code: Uses the GitHub Actions built-in action to checkout the source code repository at the latest commit.
 
-yaml
-
+```yaml
   - name: Set up Terraform
     uses: hashicorp/setup-terraform@v1
     with:
       terraform_version: 1.6.3
+```
+Set up Terraform: Utilises the HashiCorp setup-terraform action to install and set up the specified version of Terraform.
 
-    Set up Terraform: Utilizes the HashiCorp setup-terraform action to install and set up the specified version of Terraform.
-
-yaml
-
+```yaml
   - name: Configure Azure CLI
     run: |
       az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
       az account set --subscription ${{ secrets.ARM_SUBSCRIPTION_ID }}
 
-    Configure Azure CLI: Configures the Azure CLI with the necessary credentials using Azure service principal details stored as GitHub secrets.
+```    
 
-yaml
+Configure Azure CLI: Configures the Azure CLI with the necessary credentials using Azure service principal details stored as GitHub secrets.
 
+```yaml
   - name: List Azure Resources
     run: |
       az resource list --output table
+```
+List Azure Resources: Uses the Azure CLI to list resources in the specified Azure subscription. 
 
-    List Azure Resources: Uses the Azure CLI to list resources in the specified Azure subscription.
-
-yaml
-
+```yam
   - name: Initialize and Set up Terraform Backend
     run: |
       terraform init -force-copy
+```
+Initialize and Set up Terraform Backend: Initialises the Terraform configuration and sets up the Terraform backend.
 
-    Initialize and Set up Terraform Backend: Initializes the Terraform configuration and sets up the Terraform backend.
-
-yaml
-
+```yaml
   - name: Apply Terraform
     run: terraform apply -auto-approve
-
-    Apply Terraform: Executes the Terraform apply command with auto-approval to deploy the infrastructure specified in the Terraform configuration.
+```
+Apply Terraform: Executes the Terraform apply command with auto-approval to deploy the infrastructure specified in the Terraform configuration.
 
 This GitHub Actions workflow automates the process of deploying Terraform configurations on Azure, providing a streamlined and version-controlled approach to infrastructure management.
 
@@ -246,8 +243,13 @@ resource "azurerm_static_site" "production_website" {
 
 ## Web design
 
+For the web design, I'm using React to meet the requirements of the development project. Initially, I built a single page website as a temporary website: 
 
 ![Temporary Website](https://personalblogimages.blob.core.windows.net/websiteimages/falmouth%20allotments%20temp%20page-1.webp)
+
+The temporary website [scores an A+ on carbon emissions](https://www.websitecarbon.com/website/falmouthallotments-org/) and a perfect score on [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/#devtools). The Lighthouse score being a lot easier to achieve on a simple one page website. That is not to say it did not require work to achieve. My initial colour schemes for buttons to download the forms, I thought were accessible, only to find the colours were too close that there was the potential that some people may struggle to differentiate text from the background. Fortunately, an error avoided thanks to the accessibility report. I have also made use of WEBP image files to reduce the performance impact by loading images. The [WEBP Image format](https://developers.google.com/speed/webp) has been developed by google and are smaller than JPEG or PNG file formats. 
+
+The temporary website does not reflect the new design of the replacement website. It was valuable in testing the aviable accessibility tools as well as the deployment process.
 
 ### React setup
 
