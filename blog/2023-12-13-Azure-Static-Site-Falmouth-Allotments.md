@@ -1,11 +1,11 @@
 ---
 slug: azure-static-web-app-falmouth-allotments
-title: Falmouth Allotments Web Design using Azure Static Web Apps
-description: Redesign of the Falmouth Allotments Website and hosting the site using Azure Static Web App part 1
+title: Falmouth Allotments Website Deployment using Azure Static Web Apps
+description: Redesign of the Falmouth Allotments Website and deployment the site using Azure Static Web App
 authors: passmore
-tags: [Web Design, Azure, React, Github Actions, Static Web App, Terraform]
+tags: [Web Design, Azure, React, GitHub Actions, Static Web App, Terraform]
 image: https://personalblogimages.blob.core.windows.net/websiteimages/Falmouthallotmentspreview.webp
-draft: true
+draft: false
 ---
 
 I took over managing the [Falmouth Allotments website](https://falmouthallotments.org/) and needed to migrate the website from a previous hosting solution. I initially deployed the WordPress site to a `Standard B1s` virtual machine. However, a recent update ended up breaking the WordPress site and initial attempts to fix failed.
@@ -40,7 +40,7 @@ The terraform deployment requires a Azure service principal to be created in Azu
 
 The gitaction workflow is designed to automate the deployment of Terraform configurations on Azure when changes are pushed to the specified branch (in this case, the master branch). I will break down the key components of the workflow:
 
-```yaml
+```yml
 name: Deploy Terraform
 
 on:
@@ -53,7 +53,7 @@ name: Specifies the name of the GitHub Actions workflow, in this case, "Deploy T
 
 on: Defines the trigger for the workflow. In this example, the workflow is triggered on each push to the master branch.
 
-```yaml
+```yml
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -65,7 +65,7 @@ terraform: The name of the job, representing the Terraform deployment.
 
 runs-on: Specifies the type of runner for the job. In this case, it runs on an Ubuntu environment.
 
-```yaml
+```yml
 steps:
   - name: Checkout code
     uses: actions/checkout@v2
@@ -75,7 +75,7 @@ steps: Defines a series of steps to be executed within the job.
 
 Checkout code: Uses the GitHub Actions built-in action to checkout the source code repository at the latest commit.
 
-```yaml
+```yml
   - name: Set up Terraform
     uses: hashicorp/setup-terraform@v1
     with:
@@ -83,7 +83,7 @@ Checkout code: Uses the GitHub Actions built-in action to checkout the source co
 ```
 Set up Terraform: Utilises the HashiCorp setup-terraform action to install and set up the specified version of Terraform.
 
-```yaml
+```yml
   - name: Configure Azure CLI
     run: |
       az login --service-principal -u ${{ secrets.ARM_CLIENT_ID }} -p ${{ secrets.ARM_CLIENT_SECRET }} --tenant ${{ secrets.ARM_TENANT_ID }}
@@ -93,21 +93,21 @@ Set up Terraform: Utilises the HashiCorp setup-terraform action to install and s
 
 Configure Azure CLI: Configures the Azure CLI with the necessary credentials using Azure service principal details stored as GitHub secrets.
 
-```yaml
+```yml
   - name: List Azure Resources
     run: |
       az resource list --output table
 ```
 List Azure Resources: Uses the Azure CLI to list resources in the specified Azure subscription. 
 
-```yam
+```yml
   - name: Initialize and Set up Terraform Backend
     run: |
       terraform init -force-copy
 ```
 Initialize and Set up Terraform Backend: Initialises the Terraform configuration and sets up the Terraform backend.
 
-```yaml
+```yml
   - name: Apply Terraform
     run: terraform apply -auto-approve
 ```
@@ -247,12 +247,137 @@ For the web design, I'm using React to meet the requirements of the development 
 
 ![Temporary Website](https://personalblogimages.blob.core.windows.net/websiteimages/falmouth%20allotments%20temp%20page-1.webp)
 
-The temporary website [scores an A+ on carbon emissions](https://www.websitecarbon.com/website/falmouthallotments-org/) and a perfect score on [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/#devtools). The Lighthouse score being a lot easier to achieve on a simple one page website. That is not to say it did not require work to achieve. My initial colour schemes for buttons to download the forms, I thought were accessible, only to find the colours were too close that there was the potential that some people may struggle to differentiate text from the background. Fortunately, an error avoided thanks to the accessibility report. I have also made use of WEBP image files to reduce the performance impact by loading images. The [WEBP Image format](https://developers.google.com/speed/webp) has been developed by google and are smaller than JPEG or PNG file formats. 
+The temporary website [scores an A+ on carbon emissions](https://www.websitecarbon.com/website/falmouthallotments-org/) and a perfect score on [Google Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/#devtools). The Lighthouse score being a lot easier to achieve on a simple one page website. That is not to say it did not require work to achieve. My initial colour schemes for buttons to download the forms, I thought were accessible, only to find the colours were too close that there was the potential that some people may struggle to differentiate text from the background. Fortunately, an error avoided thanks to the accessibility report. 
+
+![100% score](https://personalblogimages.blob.core.windows.net/websiteimages/100ratingfalmouthallotments.webp)
+
+Even with a 100% score, there are still helpful advice to improve performance. For example, it has advised updating the JPEG and PNG files to more a next-gen web image format. For this I have made use of WEBP image files to reduce the performance impact by loading images. The [WEBP Image format](https://developers.google.com/speed/webp) has been developed by google and are smaller than JPEG or PNG file formats. The page went from a load time from 0.5 seconds to 0.3 seconds by replacing the PNG and JPEG file formats with WEBP format.
+
+![next-gen web image advisery](https://personalblogimages.blob.core.windows.net/websiteimages/adveriseryfalmouthallotments.webp)
 
 The temporary website does not reflect the new design of the replacement website. It was valuable in testing the aviable accessibility tools as well as the deployment process.
 
 ### React setup
 
-### Github Action setup
+Setting up a React project is very easy. There are a large range of React Templates to choose from. However, in this case I went with a [React Basic Template](https://GitHub.com/staticwebdev/react-basic), as I simply needed to build a single page website. By using the template I was able to create a new repository with all the necessary folder structure and files. The only additional file required was the main.yml file for the GitHub Action pipeline for deployment. 
+
+### GitHub Action setup
+
+To deploy the website files to the Azure Static Web App we use GitHub Actions. The pipline builds the website when a new commit is pushed to the `main` branch. 
+
+```yml
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+```
+name: Specifies the name of the GitHub Actions workflow. In this case, it's named "Build and Deploy."
+
+on: Defines the trigger for the workflow. This workflow is triggered on each push to the "main" branch.
+
+
+```yml
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+```
+
+jobs: Describes a set of tasks to be executed as part of the workflow.
+
+build_and_deploy: Specifies the name of the job, which is "build_and_deploy" in this case.
+
+runs-on: Specifies the type of runner for the job. In this example, it runs on an Ubuntu environment.
+
+```yml
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+```
+
+steps: Defines a series of steps to be executed within the job.
+
+name: Describes the purpose of the step, in this case, checking out the repository.
+
+uses: Specifies the GitHub Actions built-in action to be used. In this case, it's actions/checkout@v2, which checks out the source code repository at the latest commit.
+
+```yml
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14
+```
+
+This step sets up Node.js for the workflow.
+
+name: Describes the purpose of the step, which is to set up Node.js.
+
+uses: Specifies the GitHub Actions built-in action to set up Node.js. In this case, it's actions/setup-node@v3.
+
+with: Provides configuration options for the Node.js setup, such as the version to be used (Node.js version 14).
+
+```yml
+      - name: Install Node.js dependencies
+        run: npm install
+```
+
+This step installs Node.js dependencies using npm.
+
+name: Describes the purpose of the step, which is to install Node.js dependencies.
+
+run: Specifies the command to be run in the shell, which is npm install.
+
+```yml
+      - name: Build React app
+        run: npm run build
+```
+
+This step builds the React app.
+
+name: Describes the purpose of the step, which is to build the React app.
+
+run: Specifies the command to be run in the shell, which is npm run build.
+
+```yml
+      - name: Deploy to Azure Static Web Apps
+        uses: azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: 'upload'
+          app_location: 'build'
+          output_location: '' 
+```
+
+This step deploys the application to Azure Static Web Apps.
+
+name: Describes the purpose of the step, which is to deploy to Azure Static Web Apps.
+
+uses: Specifies the GitHub Actions custom action to deploy to Azure Static Web Apps. In this case, it's azure/static-web-apps-deploy@v1.
+
+with: Provides configuration options for the deployment.
+
+azure_static_web_apps_api_token: Specifies the Azure Static Web Apps API token, which is stored as a GitHub secret.
+
+repo_token: Specifies the GitHub token for repository access, which is also stored as a GitHub secret.
+
+action: Specifies the deployment action. In this case, it's set to 'upload' to upload the application.
+
+app_location: Specifies the location of the application files. In this case, it's set to 'build'.
+
+output_location: Specifies the location of the output files. It's an empty string in this case.
+
+This GitHub Actions workflow automates the process of building a React app, and deploying it to Azure Static Web Apps whenever changes are pushed to the main branch.
 
 ### Custom Domain
+
+Azure Static Web Apps provides a domain at set up, in this case [brave-ocean-04472ae03.4.azurestaticapps.net](https://brave-ocean-04472ae03.4.azurestaticapps.net/). Initially, helpful for testing your new app, but if this is a project you want to share then you will look at setting up a custom domain. Fortunately, this is a straight forward process. You need to varify ownership of the domain with Azure and then update records to point at the Azure Static Web App. 
+
+Navigate to the Azure portal and access the Azure Static Web Apps resource. Within the "Custom domains" section, add your desired domain name, ensuring it aligns with your organisation or project. Subsequently, update your domain registrar's DNS settings to point to the Azure-provided DNS values. This facilitates the connection between your custom domain and the deployed Azure Static Web App. Once the DNS configuration propagates, your static website will be accessible through the custom domain. 
+
+## Conclusion
+
+Azure Static Web Apps are a fantastic tool for web development projects. The replacement for the Falmouth Allotment website is an enjoy development project. Coupled with the use of GitHub Actions, the deployment pipeline has been an easy and effective method of quickly deploying the website. During the write up of this blog post I was able to identify an accessibility issue and also update the images to use WEBP format. Each time, a change was made and then pushed to the repo for the automatic deployment to complete in a few minutes. This made updating the deployed website simple.  
+
+Going through the process for the temporary site, meant I have everything set up for the actual replacement site. It has also given me a great opportunity to test the tools to evaluate the site on a simple site, and consider accessibility at the initial development stage rather than trying to resolve issues after the fact. I'm looking forward to deploying the completed replacement site in the near future.  
