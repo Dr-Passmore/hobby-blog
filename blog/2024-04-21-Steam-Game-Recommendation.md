@@ -8,7 +8,7 @@ image: https://personalblogimages.blob.core.windows.net/websiteimages/game-recom
 draft: true
 ---
 
-
+Building a game recommendation system proved to be an interesting experience. Thanks to many years of Steam sales and Humble Bundles, I have built up a significant backlog of videogames.
 
 ![Insert Soul](https://personalblogimages.blob.core.windows.net/websiteimages/game-recommender.webp)
 
