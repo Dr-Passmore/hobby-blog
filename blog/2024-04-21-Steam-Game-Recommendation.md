@@ -8,7 +8,7 @@ image: https://personalblogimages.blob.core.windows.net/websiteimages/game-recom
 draft: true
 ---
 
-Building a game recommendation system proved to be an interesting experience. Thanks to many years of Steam sales and Humble Bundles, I have built up a significant backlog of videogames.
+Building a game recommendation system proved to be an interesting experience. Thanks to many years of Steam sales and Humble Bundles, I have built up a significant backlog of videogames. However, games are difficult to put into clear categories and frequently depend on common game mechanics.  
 
 ![Insert Soul](https://personalblogimages.blob.core.windows.net/websiteimages/game-recommender.webp)
 
@@ -16,6 +16,7 @@ Building a game recommendation system proved to be an interesting experience. Th
 
 ## Overview
 
+To build the game recommendation system I need to first 
 
 ## Challenges
 
@@ -29,13 +30,13 @@ The `Action` tag is applied to everything from first-person shooters such as `Do
 
 #### Alien Vs Predator
 
-In addition, you also have games that blend genres. During this project, I noticed I owned the `Alien Vs Predator`[AVP] game, which highlights the challenge. AVP has three campaigns:
+In addition, you also have games that blend genres. During this project, I noticed I owned the `Alien Vs Predator`[AVP] game, which highlights the challenge to define a games genre. AVP has three campaigns:
 
 1. Alien Campaign - Action/Puzzle - Normally break certain things and learn the map to identify routes that bypass turrets etc
-2. Marine Campaign - Action/Horror - Complete objectives and avoid being killed by waves of aliens. Instant death by face hugger jump scare.
+2. Marine Campaign - Action/Horror - Complete objectives and avoid being killed by waves of aliens. Instant death by face hugger jump scares.
 3. Predator Campaign - Action/First Person Shooter - Slaughter your way through the campaign, with some occasional platforming.
 
-All three have very different experiences and play significantly differently from each other.
+All three have very different experiences and play significantly differently from each other. 
 
 ### Bias
 
@@ -48,6 +49,44 @@ Bias is a crucial issue as the critical factors used in selecting the games will
 ### System 2: Most played games
 
 ### System 3: Random Selection of unplayed
+
+This is the simplist of the three systems. It queries the MySQL database for games and creates a data frame where it will randomly select from a list of unplayed games. If it finds no games with 0 minutes played it will then pick the game with the lowest playtime. 
+
+The games it selects eliminates anything that has been logged as either broken, completed, or previously selected. 
+
+```python
+def uncompletedgames(self):
+        query = '''SELECT * FROM steamdata.owned_games
+            WHERE Completed = 0 AND Broken = 0 AND ENDLESS = 0 AND selected = 0;'''
+        return self.query_data(query)
+```
+
+One the data is provided it is converted into a data frame and an additional query is made to the game_details table.
+
+```python
+def gamedetails(self):
+        query = 'SELECT * FROM steamdata.game_details;'
+        return self.query_data(query)
+```
+
+The additional details are left joined on the `Game ID`. This enables the selected game to have full details avalible in the output.
+
+```python
+ def neverPlayedSelection(self):
+        df = self.uncompletedgames()
+        df_details = self.gamedetails()
+        df = pd.merge(df, df_details, on='Game ID', how='left')
+        zero_minutes_games = df[df['Playtime (forever)'] == 0] 
+        if not zero_minutes_games.empty:
+            # Randomly pick one game with zero minutes played
+            random_game = zero_minutes_games.sample()
+        else:
+            # Pick the game with the lowest minutes played
+            random_game = df.loc[df['Playtime (forever)'].idxmin()]
+        return random_game
+```
+
+This system will output a random game which has no minutes or very limited playtime recorded by Steam. 
 
 ## Results and Evaluation
 
@@ -73,7 +112,7 @@ To resolve this, the analysis of the detailed descriptions needs to ignore the S
 
 To resolve this, I had to add custom stopwords, which enable me to ignore the URLs to other games in the Steam store and other generic words related to games.
 
-### Random Selection
+### Random Selection of unplayed
 
 The first random selection was a game called `Carrion`. Very enjoyable but highlighted the key issue with the use of the detailed description. The detailed description for `Carrion` is:
 
@@ -87,9 +126,9 @@ Essentially, does not contain much more detail than the short description:
 CARRION is a reverse horror game in which you assume the role of an amorphous creature of unknown origins, stalking and consuming those that imprisoned you.
 ```
 
-I would describe `Carrion` as a puzzle game with theme of playing as the monster. Essentially, feels like a cross between `The Thing` and `The Blob`. Therefore, very unlikely to be recommended by either the completed games or most played games recommenders due to the description not reflecting the gameplay genre.
+I would describe `Carrion` as a puzzle game with theme of playing as the monster. Essentially, feels like a cross between `The Thing` and `The Blob`. Therefore, very unlikely to be recommended by either the completed games or most played games recommenders due to the description not reflecting the gameplay genre, and providing very few words for the similarity score. 
 
-The random selection does provide the advantage of being able to select gems that would not be selected from the detailed descriptions, but it also carries the risk of selecting an awful game.
+The random selection of unplayed does provide the advantage of being able to select gems that would not be selected from the detailed descriptions, but it also carries the risk of selecting an awful game. Unfortunately, with the nature of bundle deals from Humble Bundle there is likely quite a decent number of terrible games that have never been played.
 
 ## Conclusion
 
