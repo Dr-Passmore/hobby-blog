@@ -16,7 +16,7 @@ Building a game recommendation system proved to be an interesting experience. Th
 
 ## Overview
 
-To build the game recommendation system I need to first 
+To build the game recommendation system I need to first
 
 ## Challenges
 

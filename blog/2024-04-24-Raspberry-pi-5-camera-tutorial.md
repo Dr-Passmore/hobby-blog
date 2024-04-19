@@ -18,16 +18,16 @@ However, when the Raspberry Pi 5 launched there was a delay in the new camera ad
 
 The initial tests directly shows the boost in performance compared to the Raspberry Pi 4. This provides an interesting opportunity to impove video footage. However, I did find some initial issues that I still need to overcome. 
 
-### Initial issues
+## Initial issues
 
 My first issue was my choice of software for web control of the camera no longer works. Unfortunately, my choice of software [RPI Cam Interface]() was based on the old raspivid and raspistill legacy library. As this is no longer supported, I had to do some research, but the main replacement software is far more based around security camera set up. This does not serve my purpose. 
 
-#### Web software
+### Web software
 
 As the software is no longer supported a longer term project is to essentially build my own web interface. Until I find time to dig into that new project I'm going to be proceeding with terminal commands and for ease of use `bash` or a `Python` script. 
 
-#### File Splitting 
+### File Splitting 
 
 During initial testing, I found that the libcamera was failing to split files. This is useful to prevent extremely large files being created. 
 
-### 
+##
