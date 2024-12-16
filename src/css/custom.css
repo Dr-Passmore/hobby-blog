@@ -6,27 +6,64 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2ecc71;
-  --ifm-color-primary-dark: #27ae60;
-  --ifm-color-primary-darker: #229954;
-  --ifm-color-primary-darkest: #1e8449;
-  --ifm-color-primary-light: #58d68d;
-  --ifm-color-primary-lighter: #85e0a8;
-  --ifm-color-primary-lightest: #a8e6c9;
+  --ifm-color-primary: #3498db; /* Thousand Sons blue */
+  --ifm-color-primary-dark: #2874a6; /* Deeper blue */
+  --ifm-color-primary-darker: #1b4f72; /* Arcane dark blue */
+  --ifm-color-primary-darkest: #10243f; /* Mystical navy */
+  --ifm-color-primary-light: #5dade2; /* Lighter blue */
+  --ifm-color-primary-lighter: #85c1e9; /* Gentle sky blue */
+  --ifm-color-primary-lightest: #d4e6f1; /* Pale ethereal blue */
   --ifm-code-font-size: 95%;
+  --ifm-font-color-base: #ffffff; /* Base font color */
+  --ifm-background-color: #0c1a27; /* Deep mystical background */
+  --ifm-background-color-alt: #14233b; /* Alternate background */
+  --ifm-color-secondary: #f1c40f; /* Gold */
 }
 
+/* Code line highlights */
 .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(52, 152, 219, 0.1); /* Blue tint */
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
 }
 
 html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(41, 128, 185, 0.2); /* Deeper blue tint for dark mode */
 }
 
+/* Centered images */
 .centered-image {
   text-align: center;
+}
+
+/* Additional typography for Thousand Sons theme */
+body {
+  font-family: 'Merriweather', serif; 
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+header, footer {
+  background-color: var(--ifm-color-primary-darkest);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Links */
+a {
+  color: var(--ifm-color-primary-light);
+}
+a:hover {
+  color: var(--ifm-color-secondary);
+}
+
+/* Buttons */
+button {
+  background-color: var(--ifm-color-primary);
+  color: #ffffff;
+  border: 1px solid var(--ifm-color-primary-dark);
+}
+button:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-darker);
 }
