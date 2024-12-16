@@ -6,64 +6,98 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #3498db; /* Thousand Sons blue */
-  --ifm-color-primary-dark: #2874a6; /* Deeper blue */
-  --ifm-color-primary-darker: #1b4f72; /* Arcane dark blue */
-  --ifm-color-primary-darkest: #10243f; /* Mystical navy */
-  --ifm-color-primary-light: #5dade2; /* Lighter blue */
-  --ifm-color-primary-lighter: #85c1e9; /* Gentle sky blue */
-  --ifm-color-primary-lightest: #d4e6f1; /* Pale ethereal blue */
+  --ifm-color-primary: #1a4e9c; /* Thousand Sons Blue */
+  --ifm-color-primary-dark: #103b73; /* Darker Blue */
+  --ifm-color-primary-darker: #0c2a55; /* Deep Blue */
+  --ifm-color-primary-darkest: #071d40; /* Almost Black-Blue */
+  --ifm-color-primary-light: #2d6db2; /* Lighter Blue */
+  --ifm-color-primary-lighter: #4788c2; /* Soft Blue */
+  --ifm-color-primary-lightest: #7fa5d0; /* Highlighted Blue */
   --ifm-code-font-size: 95%;
-  --ifm-font-color-base: #ffffff; /* Base font color */
-  --ifm-background-color: #0c1a27; /* Deep mystical background */
-  --ifm-background-color-alt: #14233b; /* Alternate background */
-  --ifm-color-secondary: #f1c40f; /* Gold */
+  --docusaurus-highlighted-code-line-bg: rgba(26, 78, 156, 0.1); /* Soft Blue Tint */
 }
 
-/* Code line highlights */
-.docusaurus-highlight-code-line {
-  background-color: rgba(52, 152, 219, 0.1); /* Blue tint */
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #f4c542; /* Thousand Sons Gold */
+  --ifm-color-primary-dark: #d3a032; /* Darker Gold */
+  --ifm-color-primary-darker: #b48a28; /* Rich Gold */
+  --ifm-color-primary-darkest: #8c671a; /* Deep Gold */
+  --ifm-color-primary-light: #f7d17d; /* Lighter Gold */
+  --ifm-color-primary-lighter: #f7e0a9; /* Soft Gold */
+  --ifm-color-primary-lightest: #f9f4c0; /* Pastel Gold */
+  --docusaurus-highlighted-code-line-bg: rgba(244, 196, 66, 0.3); /* Slight Gold Tint */
 }
 
-html[data-theme='dark'] .docusaurus-highlight-code-line {
-  background-color: rgba(41, 128, 185, 0.2); /* Deeper blue tint for dark mode */
+/* Footer styles for light mode */
+footer.footer {
+  background-color: #f1f1f1; /* Soft light blue */
+  color: #1a4e9c; /* Thousand Sons Blue for text */
 }
 
-/* Centered images */
-.centered-image {
-  text-align: center;
+.footer__title {
+  color: #000000; /* Changed for accessibility */
 }
 
-/* Additional typography for Thousand Sons theme */
-body {
-  font-family: 'Merriweather', serif; 
-  background-color: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
+.footer__copyright {
+  color: #000000; /* Changed for accessibility */
 }
 
-header, footer {
-  background-color: var(--ifm-color-primary-darkest);
-  color: var(--ifm-color-primary-lightest);
+footer.footer a {
+  color: #2d6db2; /* Lighter Blue for links */
+  text-decoration: none;
+  font-weight: bold;
 }
 
-/* Links */
-a {
-  color: var(--ifm-color-primary-light);
-}
-a:hover {
-  color: var(--ifm-color-secondary);
+footer.footer a:focus {
+  outline: 2px solid #7fa5d0; /* Highlighted Blue */
+  outline-offset: 2px;
 }
 
-/* Buttons */
-button {
-  background-color: var(--ifm-color-primary);
-  color: #ffffff;
-  border: 1px solid var(--ifm-color-primary-dark);
+footer.footer a:hover {
+  color: #7fa5d0; /* Highlighted Blue on hover */
+  text-decoration: underline;
 }
-button:hover {
-  background-color: var(--ifm-color-primary-dark);
-  border-color: var(--ifm-color-primary-darker);
+
+/* Footer styles for dark mode */
+[data-theme='dark'] footer.footer {
+  background-color: #131a27; /* Deep Blue with a touch of darkness */
+  color: #f7d17d; /* Lighter Gold text */
+}
+
+[data-theme='dark'] .footer__title {
+  color: #f9f4c0; /* Changed for accessibility */
+}
+
+[data-theme='dark'] .footer__copyright {
+  color: #f9f4c0; /* Changed for accessibility */
+}
+
+[data-theme='dark'] footer.footer a {
+  color: #f7e0a9; /* Soft Gold for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+[data-theme='dark'] footer.footer a:focus {
+  outline: 2px solid #f9f4c0; /* Pastel Gold */
+  outline-offset: 2px;
+}
+
+[data-theme='dark'] footer.footer a:hover {
+  color: #f9f4c0; /* Pastel Gold on hover */
+  text-decoration: underline;
+}
+
+pre, code {
+  background-color: #f7e0a9; /* Soft Yellow Tint */
+  border-radius: 5px; /* Rounded corners */
+  padding: 2px; /* Padding for readability */
+}
+
+/* For dark mode */
+[data-theme='dark'] pre, [data-theme='dark'] code {
+  background-color: #1a2a4a; /* Soft Blue Tint */
+  border-radius: 5px; /* Rounded corners */
+  padding: 2px; /* Padding for readability */
 }
