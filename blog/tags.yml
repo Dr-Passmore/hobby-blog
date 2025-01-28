@@ -1,0 +1,49 @@
+Programming:
+    label: Programming
+    permalink: /programming
+    description: Posts about programming languages, tutorials, and tips.
+Web Development:
+    label: Web Development
+    permalink: /web-development
+    description: Articles on web development, frameworks, and best practices.
+Raspberry Pi:
+    label: Raspberry Pi
+    permalink: /raspberry-pi
+    description: Projects and tutorials involving Raspberry Pi.
+Docker:
+    label: Docker
+    permalink: /docker
+    description: Articles and tutorials about Docker.
+Calibre:
+    label: Calibre
+    permalink: /calibre
+    description: Posts about using Calibre for managing e-books.
+DIY Projects:
+    label: DIY Projects
+    permalink: /diy-projects
+    description: Do-it-yourself projects and guides.
+Azure:
+    label: Azure
+    permalink: /azure
+    description: Tutorials and articles about Microsoft Azure.
+Beginner Friendly:
+    label: Beginner Friendly
+    permalink: /beginner-friendly
+    description: Posts suitable for beginners.
+E-Paper Display:
+    label: E-Paper Display
+    permalink: /e-paper-display
+    description: Projects and tutorials involving E-Paper displays.
+Python:
+    label: Python
+    permalink: /python
+    description: Tutorials and articles about Python programming.
+High Quality Camera Module:
+    label: High Quality Camera Module
+    permalink: /high-quality-camera-module
+    description: Projects involving the Raspberry Pi High Quality Camera Module.
+Bird Feeder:
+    label: Bird Feeder
+    permalink: /bird-feeder
+    description: DIY projects related to bird feeders.
+  
