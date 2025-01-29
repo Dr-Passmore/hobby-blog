@@ -1,45 +1,46 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './HomepageFeatures.module.css';
+import Link from '@docusaurus/Link';
 
 // Feature List with Images and Tags
 const FeatureList = [
   {
-    title: 'Electronics',
+    title: 'Programming',
     images: [
       'https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi-case.jpg',
       'https://personalblogimages.blob.core.windows.net/websiteimages/Tide Display 2023-09-02 at 17.29.50.jpg',
     ],
-    tag: 'electronics',
+    tag: 'programming', // Updated tag
     description: (
       <>
-        Explore my passion for technology in the world of electronics, with a special focus on microcontrollers! I will be documenting my ongoing projects.
+        Explore my passion for technology in the world of programming! I will be documenting my ongoing projects, tutorials, and tips.
       </>
     ),
   },
   {
-    title: 'Coding',
+    title: 'DIY Projects',
     images: [
-      'https://via.placeholder.com/300x200.png?text=Coding+Project+1',
-      'https://via.placeholder.com/300x200.png?text=Coding+Project+2',
+      'https://via.placeholder.com/300x200.png?text=DIY+Project+1',
+      'https://via.placeholder.com/300x200.png?text=DIY+Project+2',
     ],
-    tag: 'coding',
+    tag: 'diy-projects', // Updated tag
     description: (
       <>
-        I have experience with a range of languages, but my go-to language has become Python. I'm going to be showcasing any exciting coding projects I'm working on.
+        I love building things from scratch. Here, I'll share my DIY projects, including guides and step-by-step tutorials.
       </>
     ),
   },
   {
-    title: 'Cloud Computing',
+    title: 'Azure',
     images: [
-      'https://via.placeholder.com/300x200.png?text=Cloud+Project+1',
-      'https://via.placeholder.com/300x200.png?text=Cloud+Project+2',
+      'https://via.placeholder.com/300x200.png?text=Azure+Project+1',
+      'https://via.placeholder.com/300x200.png?text=Azure+Project+2',
     ],
-    tag: 'cloud-computing',
+    tag: 'azure', // Updated tag
     description: (
       <>
-        I'll be sharing my knowledge and documenting fascinating home projects that showcase the power and versatility of cloud technology. I have become highly specialised in Microsoft Azure.
+        I'll be sharing my knowledge and documenting fascinating projects that showcase the power and versatility of Microsoft Azure.
       </>
     ),
   },
