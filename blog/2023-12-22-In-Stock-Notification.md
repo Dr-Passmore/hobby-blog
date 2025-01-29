@@ -3,9 +3,9 @@ slug: in-stock-notifcation-raspberry-pi
 title: Python Check for Change 
 description: Through the use of Python we can create a Python Program to check for change and send a text message when a change is found.
 authors: passmore
-tags: [Python, Automation, Raspberry Pi, Beginner Friendly]
+tags: [Python, Automation, Raspberry Pi, Beginner Friendly, Programming]
 image: https://personalblogimages.blob.core.windows.net/websiteimages/Falmouthallotmentspreview.webp
-draft: true
+draft: false
 ---
 
 The chip shortage last year meant getting hold of a Raspberry Pi from an official supplier was next to impossible. 
