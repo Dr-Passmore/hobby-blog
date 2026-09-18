@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 (module.exports = {
   title: "Dr. Passmore's Tech Lab",
   tagline: 'Geeking Out on Electronics and Coding',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://passmoretechlab.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -22,9 +22,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
         docs: false,
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
-            'https://github.com/Dr-Passmore/hobby-blog/tree/master',
+            'https://github.com/Dr-Passmore/hobby-blog/edit/master/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -39,7 +38,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
       navbar: {
         title: "Dr. Passmore's Tech Lab",
         logo: {
-          alt: 'My Site Logo',
+          alt: "Dr. Passmore's Tech Lab logo",
           src: 'img/logo.svg',
         },
         items: [
