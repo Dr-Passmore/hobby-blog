@@ -59,7 +59,7 @@ function About() {
   return (
     <Layout
       title={`About ${siteConfig.title}`}
-      description="About Dr Phillip Passmore — Cloud Architect and tinkerer sharing Raspberry Pi, electronics, and Azure projects.">
+      description="About Dr Phillip Passmore — Senior Developer Platform Engineer, team lead, and tinkerer sharing Raspberry Pi, electronics, and Azure projects.">
       <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">Dr Phillip Passmore</h1>
@@ -101,7 +101,9 @@ function About() {
 
           <p>After 2 years I left the End User Experience Team to become an automation specialist in the Data Warehouse at RCHT. An interesting aspect to this job was the plan to migrate the Data Warehouse to Azure. Fortunately, we had free access to Azure training and Azure Microsoft Certs to enable the team to upskill. I took this opportunity to complete a wide range of Azure skills including the majority of the data, infrastructure, and Security certs. Eventually, the migration to Azure was put on long term hold, but not before I had gained a large amount of Azure knowledge.</p>
 
-          <p>Thanks to the opportunity to be involved in an Azure Migration and all the training I had access to, I now work as a Cloud Architect. I'm working on keeping up to date with the wide range of Azure technology and specialising into data architecture.</p>
+          <p>That Azure knowledge opened the door to consultancy. After a short spell at Falmouth University building Microsoft Power Apps solutions, I joined Shaping Cloud as a Cloud Architect, where I led the migration of an NHS Trust from its on-premises data centre to Azure — delivering a secure, compliant cloud environment in a highly regulated healthcare setting. From there I moved to Kortext as a DevOps Engineer and Team Lead, directing a full AWS to Azure migration with zero downtime across multiple client environments and running containerised applications on Kubernetes.</p>
+
+          <p>Today I am a Senior Developer Platform Engineer and Team Lead at CyberSentriq, leading a team of Platform Engineers. Day to day that means architecting secure, scalable Azure infrastructure, building CI/CD pipelines in Azure DevOps and GitLab, championing Infrastructure as Code with Terraform, Bicep, and Ansible, designing observability with Application Insights, Prometheus, and Grafana, and mentoring engineers. My background in healthcare and life sciences keeps me grounded in compliance, data governance, and delivering regulated systems with a security-first mindset.</p>
 
           <h3>Azure Certifications</h3>
 
