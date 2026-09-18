@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Dr. Passmore's Tech Lab — hands-on write-ups of Raspberry Pi builds, electronics, DIY projects, Python programming, and Azure cloud experiments.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
