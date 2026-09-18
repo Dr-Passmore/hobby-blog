@@ -46,4 +46,67 @@ Bird Feeder:
     label: Bird Feeder
     permalink: /bird-feeder
     description: DIY projects related to bird feeders.
-  
+Raspberry Pi 5:
+    label: Raspberry Pi 5
+    permalink: /raspberry-pi-5
+    description: Projects and tutorials involving the Raspberry Pi 5.
+Web Design:
+    label: Web Design
+    permalink: /web-design
+    description: Posts about designing and building websites.
+React:
+    label: React
+    permalink: /react
+    description: Articles involving the React framework.
+GitHub Actions:
+    label: GitHub Actions
+    permalink: /github-actions
+    description: CI/CD workflows built with GitHub Actions.
+Static Web App:
+    label: Static Web App
+    permalink: /static-web-app
+    description: Projects using Azure Static Web Apps.
+Terraform:
+    label: Terraform
+    permalink: /terraform
+    description: Infrastructure as Code with Terraform.
+Automation:
+    label: Automation
+    permalink: /automation
+    description: Automating tasks and workflows.
+Accessibility:
+    label: Accessibility
+    permalink: /accessibility
+    description: Making technology accessible to everyone.
+YouTube:
+    label: YouTube
+    permalink: /youtube
+    description: Projects involving YouTube content.
+Inclusivity:
+    label: Inclusivity
+    permalink: /inclusivity
+    description: Posts about inclusive technology.
+Coding Tutorials:
+    label: Coding Tutorials
+    permalink: /coding-tutorials
+    description: Step-by-step coding tutorials.
+Artificial Intelligence:
+    label: Artificial Intelligence
+    permalink: /artificial-intelligence
+    description: Projects and articles involving AI.
+Natural Language Processing:
+    label: Natural Language Processing
+    permalink: /natural-language-processing
+    description: Working with text and language data.
+API:
+    label: API
+    permalink: /api
+    description: Building with and consuming APIs.
+MySql:
+    label: MySql
+    permalink: /mysql
+    description: Working with MySQL databases.
+Recommendation:
+    label: Recommendation
+    permalink: /recommendation
+    description: Recommendation systems and algorithms.
