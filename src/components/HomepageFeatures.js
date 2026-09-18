@@ -9,38 +9,24 @@ const FeatureList = [
     title: 'Programming',
     images: [
       'https://personalblogimages.blob.core.windows.net/websiteimages/calibre-project-pi-case.jpg',
-      'https://personalblogimages.blob.core.windows.net/websiteimages/Tide Display 2023-09-02 at 17.29.50.jpg',
+      'https://personalblogimages.blob.core.windows.net/websiteimages/Tide%20Display%202023-09-02%20at%2017.29.50.jpg',
     ],
-    tag: 'programming', // Updated tag
+    tag: 'programming',
     description: (
       <>
-        Explore my passion for technology in the world of programming! I will be documenting my ongoing projects, tutorials, and tips.
+        Explore my passion for technology in the world of programming! I will be documenting my ongoing projects, tutorials, and tips — from Python scripts to Azure cloud builds.
       </>
     ),
   },
   {
     title: 'DIY Projects',
     images: [
-      'https://via.placeholder.com/300x200.png?text=DIY+Project+1',
-      'https://via.placeholder.com/300x200.png?text=DIY+Project+2',
+      'https://personalblogimages.blob.core.windows.net/websiteimages/Bird%20Feeder%20Camera%20setup.jpg',
     ],
-    tag: 'diy-projects', // Updated tag
+    tag: 'diy-projects',
     description: (
       <>
         I love building things from scratch. Here, I'll share my DIY projects, including guides and step-by-step tutorials.
-      </>
-    ),
-  },
-  {
-    title: 'Azure',
-    images: [
-      'https://via.placeholder.com/300x200.png?text=Azure+Project+1',
-      'https://via.placeholder.com/300x200.png?text=Azure+Project+2',
-    ],
-    tag: 'azure', // Updated tag
-    description: (
-      <>
-        I'll be sharing my knowledge and documenting fascinating projects that showcase the power and versatility of Microsoft Azure.
       </>
     ),
   },
@@ -60,7 +46,7 @@ function Feature({ images, title, description, tag }) {
   const randomImage = getRandomImage(images);
 
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx('col col--6')}>
       <div className="text--center">
         <Link to={`/blog/tags/${tag}`}>
           <img src={randomImage} alt={`${title} preview`} className={styles.featureImg} />
